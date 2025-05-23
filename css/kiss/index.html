@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!--     <div class="contation">
+        <div id="l" class="ball"></div>
+        <div id="r" class="ball"></div>
+        //#:标签选择器
+        //.ball:类选择器
+    </div> -->
+    <!--  .a>.b1#b2+.c1#c2 -->
+    <div class="container">
+        <div class="ball" id="bl">
+            <div class="face fl">
+                <div class="eye el "></div>
+                <div class="eye er"></div>
+               <div class="mouth ml"></div>
+            </div>
+
+        </div>
+        <div class="ball" id="br">
+            <div class="face fr">
+                <div class="eye el er1"></div>
+                <div class="eye er er1"></div>
+               <div class="mouth mr"></div>
+            </div>
+        </div>      
+    </div>
+
+
+    <style>
+        body{
+            background-color: rgb(255, 129, 61);
+            margin: 0;
+        }
+
+        .container{
+            position: absolute;
+          /*   background-color: rgb(86, 255, 190); */
+            top: 50%;
+            left: 50%;
+            width: 238px;
+         /*    height: 200px; */
+            transform: translate(-50%,-50%);
+        }
+        .ball
+        {
+            width: 100px;
+            height: 100px;
+            background-color: #ffffff;
+            border: 8px solid #070707;
+            border-radius: 50%;
+           /*  display: inline-block; */
+           float: right;
+           vertical-align: top;
+           position: relative; /* 相对定位 子元素相对它定位 */
+        }
+        .face{
+                width: 70px;
+                height: 30px;
+                position: absolute;
+                right: 0;
+                top: 30px;
+                border-top-right-radius: 30px;
+               /*  background-color: #ff3838; */
+
+        }
+        .eye{
+            width: 15px;
+            height: 10px;
+            border-radius: 50%;
+            border-bottom: 5px solid #000000;
+            position: absolute;/* 定位后,块级元素消失 */
+        }
+        .el{
+            left: 50px;
+            
+        }
+        .er{
+            right: 10;
+        }
+        .mouth{
+               width: 30px;
+               height: 14px;
+               border-radius: 50%;
+               border-bottom: 5px solid #000000;
+               position: absolute;
+               bottom: -5px;
+               transform: translate(3px);
+               left: 0;
+               right: 0;
+               margin: auto;
+        }
+        .er1{
+            border-top: 5px solid #000000;
+            border-bottom: 0px;
+        }
+
+    </style>
+
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电商首页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF0000',
+                        secondary: '#FF6B6B'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '2px',
+                        DEFAULT: '4px',
+                        'md': '8px',
+                        'lg': '12px',
+                        'xl': '16px',
+                        '2xl': '20px',
+                        '3xl': '24px',
+                        'full': '9999px',
+                        'button': '4px'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="w-[375px] min-h-[762px] bg-white">
+    <nav class="fixed top-0 w-full bg-primary text-white px-4 py-3 flex items-center justify-between z-50">
+        <div class="text-xl font-['Pacifico']">logo</div>
+        <div class="flex items-center space-x-3">
+            <i class="fa-solid fa-search text-lg"></i>
+            <i class="fa-solid fa-bell text-lg"></i>
+        </div>
+    </nav>
+
+    <div class="mt-[56px] mb-[70px]">
+        <div class="px-4 py-3">
+            <div class="relative">
+                <img src="https://ai-public.mastergo.com/ai/img_res/2b8973ed950898be0ea8d4293716ac92.jpg" 
+                     class="w-full h-40 object-cover rounded-lg" alt="Banner">
+            </div>
+        </div>
+
+        <div class="grid grid-cols-5 gap-2 px-4 py-6">
+            <div class="flex flex-col items-center">
+                <div class="w-12 h-12 rounded-full overflow-hidden mb-1">
+                    <img src="https://ai-public.mastergo.com/ai/img_res/8360873e7a23378709aa859dd8d8ca78.jpg" class="w-full h-full object-cover">
+                </div>
+                <span class="text-xs text-gray-600 whitespace-nowrap overflow-hidden text-overflow-ellipsis">新品上市</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="w-12 h-12 rounded-full overflow-hidden mb-1">
+                    <img src="https://ai-public.mastergo.com/ai/img_res/98e69879b2417ce23c0a7cdc2e8e0779.jpg" class="w-full h-full object-cover">
+                </div>
+                <span class="text-xs text-gray-600 whitespace-nowrap overflow-hidden text-overflow-ellipsis">限时特惠</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="w-12 h-12 rounded-full overflow-hidden mb-1">
+                    <img src="https://ai-public.mastergo.com/ai/img_res/f787a152dbe4cd9676d4834fa214b99d.jpg" class="w-full h-full object-cover">
+                </div>
+                <span class="text-xs text-gray-600 whitespace-nowrap overflow-hidden text-overflow-ellipsis">购物车</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="w-12 h-12 rounded-full overflow-hidden mb-1">
+                    <img src="https://ai-public.mastergo.com/ai/img_res/5b3584ebc9c7498f4458be76db432b21.jpg" class="w-full h-full object-cover">
+                </div>
+                <span class="text-xs text-gray-600 whitespace-nowrap overflow-hidden text-overflow-ellipsis">优惠券</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="w-12 h-12 rounded-full overflow-hidden mb-1">
+                    <img src="https://ai-public.mastergo.com/ai/img_res/6f61bfebffa911df33324e7508b3a09e.jpg" class="w-full h-full object-cover">
+                </div>
+                <span class="text-xs text-gray-600 whitespace-nowrap overflow-hidden text-overflow-ellipsis">会员中心</span>
+            </div>
+        </div>
+
+        <div class="px-4">
+            <h2 class="text-lg font-medium mb-4">热门商品</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-white rounded-lg shadow">
+                    <img src="https://ai-public.mastergo.com/ai/img_res/93f48176c2f6e02c9182f107786ee9dc.jpg" class="w-full h-40 object-cover rounded-t-lg">
+                    <div class="p-2">
+                        <h3 class="text-sm font-medium">轻便运动鞋</h3>
+                        <p class="text-xs text-gray-500 mt-1">舒适透气，时尚百搭</p>
+                        <div class="flex items-center justify-between mt-2">
+                            <span class="text-primary text-sm font-medium">¥ 299</span>
+                            <span class="text-xs text-gray-400">已售 2.3k</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow">
+                    <img src="https://ai-public.mastergo.com/ai/img_res/f9fbee811af24000e76c24dc8ad47412.jpg" class="w-full h-40 object-cover rounded-t-lg">
+                    <div class="p-2">
+                        <h3 class="text-sm font-medium">时尚手提包</h3>
+                        <p class="text-xs text-gray-500 mt-1">优质皮革，经典设计</p>
+                        <div class="flex items-center justify-between mt-2">
+                            <span class="text-primary text-sm font-medium">¥ 499</span>
+                            <span class="text-xs text-gray-400">已售 1.8k</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed bottom-0 w-full bg-white border-t border-gray-200 flex justify-around items-center py-2 z-50">
+        <div class="flex flex-col items-center">
+            <i class="fa-solid fa-house text-primary text-xl"></i>
+            <span class="text-xs text-primary mt-1">首页</span>
+        </div>
+        <div class="flex flex-col items-center">
+            <i class="fa-solid fa-play text-gray-400 text-xl"></i>
+            <span class="text-xs text-gray-400 mt-1">视频</span>
+        </div>
+        <div class="flex flex-col items-center">
+            <i class="fa-solid fa-message text-gray-400 text-xl"></i>
+            <span class="text-xs text-gray-400 mt-1">消息</span>
+        </div>
+        <div class="flex flex-col items-center">
+            <i class="fa-solid fa-shopping-bag text-gray-400 text-xl"></i>
+            <span class="text-xs text-gray-400 mt-1">购物</span>
+        </div>
+        <div class="flex flex-col items-center">
+            <i class="fa-solid fa-user text-gray-400 text-xl"></i>
+            <span class="text-xs text-gray-400 mt-1">我的</span>
+        </div>
+    </div>
+</body>
+</html>

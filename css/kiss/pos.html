@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <div class="ibox">
+            <div class="cbox">
+
+            </div>
+        </div>
+    </div>
+    <style>
+.box{
+    width: 200px;
+    height: 200px;
+    background-color: pink;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.ibox{
+    width: 150px;
+    height: 150px;
+    background-color: aqua;
+    position: relative;/* 1. 2.针对自身原本在的位置定位 */
+    left: 10px;
+    top: 10px;
+    margin-top: 30px;
+}
+
+/*  css reset 样式重置 */
+*{
+    margin: 0;
+    padding: 0;
+}
+    </style>
+</body>
+</html>
