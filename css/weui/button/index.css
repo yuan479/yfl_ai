@@ -1,35 +1,29 @@
-* {
+*{
     margin: 0;
     padding: 0;
 }
-
-body {
+body{
     background-color: #efefef;
     height: 100%;
 
 }
-
-.weui-page {
+.weui-page{
     padding: 18px;
 
 }
-
-.weui-page__hd {
+.weui-page__hd{
     padding: 40px;
 
 }
-
-.weui-page__title {
+.weui-page__title{
     font-size: 30px;
     font-weight: bold;
 }
-
-.weui-page__desc {
+.weui-page__desc{
     font-size: 16px;
     color: rgb(60, 54, 49);
 }
-
-.weui-btn {
+.weui-btn{
     width: 200px;
     height: 50px;
     border-radius: 10px;
@@ -38,47 +32,63 @@ body {
     display: block;
     margin: 30px;
 
-
+    
 }
-
-.weui-btn_primary {
+.weui-btn_primary{
     background-color: #00b200;
     color: white;
 }
-
-.weui-btn_default {
+.weui-btn_default{
     background-color: #afafaf;
     color: rgb(0, 0, 0);
 }
-
-.weui-cells {}
-
-.weui-cells__title {
+.weui-cells{
+    
+}
+.weui-cells__title{
     font-size: 25px;
     font-weight: bold;
 }
-
-.weui-cell {
+.weui-cell{
     width: 80%;
-    background: #ffffff;
-    margin: 30px;
-    display: flex;
-    font-size: 20px;
-    align-items: center;
-    gap: 50px;
+background: #ffffff;
+margin: 30px;
+display: flex;
+font-size: 20px;
+align-items: center;
+gap:50px;
 }
-
-img {
-    width: 80px;
-    height: 80px;
+img{
+    width: 100px;
+    height: 100px;
 }
-
-.weui-cell__bd {
+.weui-cell__bd{
     padding-left: 100px;
     padding-right: 100px;
-
+   
 }
 
-.weui-form {
-    font-size: 25px;
+.weui-form__hd{
+    font-size:20px ;
+    margin-bottom: 30px;
 }
+.weui-form__bd{
+    background-color: #fff;
+    border-radius: 4px;
+}
+.weui-form__id{
+
+ width: 80%;
+ height: auto;
+ display: flex;
+padding: 10px;
+
+}
+.weui-form__pwd{
+
+    width: 80%;
+    height: auto;
+    display: flex;
+   padding: 10px;
+   
+   }
