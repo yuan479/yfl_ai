@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微信</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#07C160',
+secondary: '#95EC69'
+},
+borderRadius: {
+'none': '0px',
+'sm': '2px',
+DEFAULT: '4px',
+'md': '8px',
+'lg': '12px',
+'xl': '16px',
+'2xl': '20px',
+'3xl': '24px',
+'full': '9999px',
+'button': '4px'
+}
+}
+}
+}
+</script>
+<style>
+body {
+width: 375px;
+height: 762px;
+background: #F7F7F7;
+}
+.chat-list__item:not(:last-child) {
+border-bottom: 1px solid #EFEFEF;
+}
+</style>
+</head>
+<body>
+<header class="header-nav fixed top-0 w-full bg-white z-50 px-4 py-2 flex items-center justify-between shadow-sm">
+<h1 class="header-nav__title text-lg font-medium">微信 (1046)</h1>
+<div class="header-nav__actions flex items-center space-x-4">
+<button class="header-nav__search-btn w-8 h-8 flex items-center justify-center">
+<i class="fas fa-search text-gray-600"></i>
+</button>
+<button class="header-nav__add-btn w-8 h-8 flex items-center justify-center">
+<i class="fas fa-plus text-gray-600"></i>
+</button>
+</div>
+</header>
+<main class="chat-list mt-14 mb-16 bg-white">
+<div class="chat-list__item flex p-4 items-center">
+<div class="chat-list__item-avatar w-12 h-12 rounded-lg bg-blue-500 overflow-hidden flex-shrink-0">
+<img src="https://ai-public.mastergo.com/ai/img_res/3974631fe6cfcfb6fe5c06f94b250016.jpg" class="w-full h-full object-cover" alt="腾讯新闻">
+</div>
+<div class="chat-list__item-content flex-1 ml-4">
+<div class="flex justify-between items-center">
+<h2 class="chat-list__item-title font-medium">腾讯新闻</h2>
+<span class="chat-list__item-time text-sm text-gray-400">14:11</span>
+</div>
+<p class="chat-list__item-preview text-sm text-gray-500 mt-1">皇子希望导弹和友谊能带来32年福...</p>
+</div>
+</div>
+<div class="chat-list__item flex p-4 items-center">
+<div class="chat-list__item-avatar w-12 h-12 rounded-lg bg-primary overflow-hidden flex-shrink-0">
+<img src="https://ai-public.mastergo.com/ai/img_res/6851f9b845cb8656e748cca6a1832df1.jpg" class="w-full h-full object-cover" alt="微信团队">
+</div>
+<div class="chat-list__item-content flex-1 ml-4">
+<div class="flex justify-between items-center">
+<h2 class="chat-list__item-title font-medium">微信团队</h2>
+<span class="chat-list__item-time text-sm text-gray-400">2024年1月22日</span>
+</div>
+<p class="chat-list__item-preview text-sm text-gray-500 mt-1">微信团队欢迎您，很高兴您开启了微信生...</p>
+</div>
+</div>
+</main>
+<nav class="bottom-nav fixed bottom-0 w-full bg-white border-t border-gray-200">
+<div class="grid grid-cols-4 h-16">
+<a href="#" class="bottom-nav__item flex flex-col items-center justify-center">
+<i class="fas fa-comment text-primary"></i>
+<span class="text-xs mt-1 text-primary">微信</span>
+</a>
+<a href="#" class="bottom-nav__item flex flex-col items-center justify-center">
+<i class="fas fa-address-book text-gray-400"></i>
+<span class="text-xs mt-1 text-gray-400">通讯录</span>
+</a>
+<a href="#" class="bottom-nav__item flex flex-col items-center justify-center">
+<i class="fas fa-compass text-gray-400"></i>
+<span class="text-xs mt-1 text-gray-400">发现</span>
+</a>
+<a href="#" class="bottom-nav__item flex flex-col items-center justify-center">
+<i class="fas fa-user text-gray-400"></i>
+<span class="text-xs mt-1 text-gray-400">我</span>
+</a>
+</div>
+</nav>
+</body>
+</html>
