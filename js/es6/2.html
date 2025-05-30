@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 用于显示好友信息的无序列表 -->
+    <ul id="friends"></ul>
+    <script>
+        // JSON 数组
+        // 数据
+        const friends = [
+            { name: '御坂美琴', age: 14, address: '常台盘' },
+            { name: '白井黑子', age: 13, address: '常台盘' },
+            { name: '佐天泪子', age: 15, address: '一中' }
+        ];
+        // DOM 编程
+        const ul = document.querySelector('#friends');
+        /* const ul = document.getElementById('friends'); */
+        /*  for (let i = 0; i < friends.length; i++) {
+             const friend = friends[i]; */
+        /*  for(let friend of friends)
+         //如果不需要index，就用for of,更语义化
+         ul.innerHTML += `
+         <li>
+            ${friend.name} - <i>${friend.age}岁</i> - <b>${friend.address}</b>
+         </li>
+         `; */
+        /* } */
+        // 用map
+        //es6 升级版
+        // 迭代
+       /*  console.log(friends.map(function (friend) { */
+      /*  ul.innerHTML = friends.map(function (friend) { */
+      ul.innerHTML = friends.map(friend=> {
+            /* console.log(friend) */
+           /*  return */
+            return `
+                <li>
+                    ${friend.name} 
+                    - <i>${friend.age}岁</i> 
+                    - <b>${friend.address}</b>
+                </li>
+                `;
+        }).join('');
+    </script>
+</body>
+
+</html>
