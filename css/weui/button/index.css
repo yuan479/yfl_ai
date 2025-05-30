@@ -72,23 +72,28 @@ img{
     font-size:20px ;
     margin-bottom: 30px;
 }
-.weui-form__bd{
+.weui-form__bd {
     background-color: #fff;
-    border-radius: 4px;
-}
-.weui-form__id{
-
- width: 80%;
- height: auto;
- display: flex;
-padding: 10px;
-
-}
-.weui-form__pwd{
-
     width: 80%;
-    height: auto;
+    margin: 30px; /* 水平居中 */
+    text-align: center;
+    padding: 20px;
+}
+
+.weui-form__id,
+.weui-form__pwd {
     display: flex;
-   padding: 10px;
-   
-   }
+    align-items: center; /* 垂直居中对齐 */
+    justify-content:left; /* 让标签和输入框分布在两侧 */
+    padding: 10px 0;
+}
+
+input {
+    width: 40%;
+    height: 25px;
+    border-radius: 4px;
+    padding: 0 10px;
+}
+label{
+    width: 70px;
+}

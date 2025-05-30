@@ -10,8 +10,9 @@
   -Block 概念
     - 一块内容 项目代号 设计风格 + 有哪些可复用的代码
       项目代号 + 区块的作用或职责 page
-      .weui-page
-      .tm-page
+      .weui-page 微信UI-页面
+      .tm-page   天猫-页面
+      .jd-page   京东-页面
     - Element 概念
       - 元素 __header
         块__元素  项目代号 + 区块的作用或职责 + 元素的作用或职责 page__header
