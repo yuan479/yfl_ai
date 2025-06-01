@@ -4,3 +4,5 @@ const age = 3
 // 字符串拼接告别 + 更优雅的字符串模板
 const sentence = `我的猫 ${name} 今年 ${age * 5} 岁.`
 console.log(sentence)
+console.log(9007199254740991 + 1);  // 9007199254740992 ✅
+console.log(9007199254740991 + 2);  // 9007199254740992 ❌ 结果错误！
