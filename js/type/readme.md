@@ -13,3 +13,7 @@
 ## ECMA 
   - js 是 ECMA 语法规范的一个版本
   - JavaScript 和 Java 没有关系
+
+  ## symbol 
+    es6 新增的一种数据类型  
+    唯一值  不可重复

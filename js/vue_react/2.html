@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聚焦于业务，而不是底层 API</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container" id="app">
+        <h1>{{title}}</h1>
+        <table id="friends" class="table table-striped">
+
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>所属</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 挂载点 -->
+                <tr v-for="friend in friends">
+                    <td>{{ friend.name }}</td>
+                    <td>{{ friend.addr }}</td>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/3.2.31/vue.global.min.js"></script>
+    <script>
+        // html + css 看到页面 尽快出来，css 放在头部
+        // js 交互的，可以晚一步 不会去和html +css 争抢时间
+        //  js 应该放在页面底部引用
+        // 做一个App
+        const App = {
+            //申明数据的业务
+            data() {
+                return {
+                    title:"ECUT 未来之星",
+                    friends: [
+                        { name: '齐夏', addr: '桃源' },
+                        { name: '余念安', addr: '血肉世界' },
+                        { name: '乔家劲', addr: '堂口' },
+                    ]
+                }
+            }
+        }
+        Vue.createApp(App).mount('#app')
+    </script>
+</body>
+
+</html>
