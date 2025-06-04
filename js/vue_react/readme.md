@@ -43,4 +43,8 @@
       friends
     }
     - tr v-for 配合循环输出的业务
-    
+
+## react 来自于 Facebook 适合大型应用
+  - 创建一个 react 应用
+    -  npm init vite 初始化一个项目
+

@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+  
+}
+.title{
+  background-color: pink;
+  color: rgb(37, 240, 255);
+}
+td{
+  border: 1px solid #000;
+}
+th{
+  border: 1px solid #000;
+}
