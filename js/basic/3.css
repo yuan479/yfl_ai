@@ -1,0 +1,29 @@
+/* 行为伪类 */
+h1:active {
+    color: rgb(249, 130, 194);
+}
+h2:hover {
+    color: rgb(117, 209, 255);
+}
+::selection {
+    background-color: rgb(127, 255, 127);
+}
+/* 状态伪类 */
+ input:focus{
+    border: 2px solid rgb(255, 127, 127);
+ }
+ input:checked + label{
+    color: rgb(0, 255, 234);
+ }
+ /* 结构伪类 */
+ li:nth-child(odd){
+    background-color: #fff2b4;
+ }
+ li:nth-child(even){
+    background-color: #e4a9ff;
+ }
+ /* 条件伪类 */
+ li:not(:first-child){
+    margin-bottom: 30px;
+ }
+ 

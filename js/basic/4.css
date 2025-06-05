@@ -1,0 +1,13 @@
+/* .container p:nth-child(2){
+    color: red;
+}
+.container p:nth-child(3){
+    color: rgb(25, 0, 255);
+}
+.container#demo{
+    background-color: #ffafaf;
+} */
+
+.container p:nth-of-type(2){
+    color: rgb(255, 148, 221);
+}
