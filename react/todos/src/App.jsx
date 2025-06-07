@@ -43,10 +43,12 @@ function App() {
   //数据 --> 数据状态 数据业务 数据是会变的
   const [todos, setTodos] = useState(['脱单', '摆烂', '国泰民安'])
   const [title, kid] = useState(['孩子', '你做的很好。'])
+  
   setTimeout(() => {
     setTodos(['脱单', '摆烂', '国泰民安', '不劳而获'])
     kid(['孩子', '你做的很好。', '这太有乐子了'])
   }, 3000)
+
   return (
     <div>
       <h1 className='title'>孩子,你做的很好。</h1>
