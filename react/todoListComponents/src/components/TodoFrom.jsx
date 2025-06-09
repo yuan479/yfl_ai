@@ -3,7 +3,7 @@ import { useState } from "react"
 
 function TodoForm(props) {
     const onAdd = props.onAdd
-    const [text,setText]=useState('啊哈？')
+    const [text,setText]=useState('')
 const handsubmit=(e)=>{
     //阻止默认的提交行为
     //由js来控制
