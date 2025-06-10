@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <!-- FFC弹性格式化上下文 -->
+        <div class="left">左侧</div>
+        <div class="right">右侧</div>
+    </div>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            display: flex;
+            height: 300px;
+            width: 600px;
+        }
+        .left{
+            background-color: red;
+            flex: 1 2 300px;
+        }
+       .right{
+            background-color: green;
+            flex: 2 1 200px;
+        }
+       
+    </style>
+</body>
+</html>

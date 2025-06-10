@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>两列布局Layout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            /* 对内管着子元素 flex 格式化上下文 direction*/
+            /* 弹性格式上下文 对外 宽度 */
+            /* row column 
+            左侧是侧边栏 200px 固定
+            右侧是主题内容 自适应 宽度
+            */
+
+            display: flex;
+            /* 水平排列 */
+            flex-direction: row;
+        }
+
+        .container .left {
+            background-color: red;
+            /* 固定宽度 */
+            flex: 1 1 100px;
+        }
+
+        .container main {
+            background-color: pink;
+/* flex-grow长大 flex-shrink收缩 flex-basic 基础大小 */
+            flex: 1 1 100px;
+        }
+
+        /*    .container .right {
+            background-color: green;
+         
+            flex: 1;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- html + css 将页面做好排版 -->
+    <!-- 但是光有块级，行内元素不够-->
+    <!-- 用display属性完成页面元素的文档流输出 -->
+    <div class="container">
+        <aside class="left">
+            广告或菜单
+        </aside>
+        <main>
+            主题内容
+        </main>
+      <!--   <aside class="right">
+            右侧内容
+        </aside> -->
+    </div>
+</body>
+
+</html>
