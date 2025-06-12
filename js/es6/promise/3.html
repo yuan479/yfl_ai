@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="repos"></ul>
+    <button type="button" id="btn">加载</button>
+    <script>
+
+        // 异步任务 网络请求异步
+        window.onload = function () {//浏览器网页加载事件：资源加载完成
+            console.log("onload");
+        }
+        //anync  defer  异步加载
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            // console.log("DOMContentLoaded");
+            //await 等到异步任务完成  才会执行后面的代码，异步变同步
+            constres = await fetch('http//api.github.com/users/yuan479/repos')//fetch 网络请求
+            const data = await res.json()
+            /* .then(data=>{ */
+            console.log(data);
+            document.getElementById('repos').innerHTML = data.map(item => {
+                return `<li><a href="${item.html_url}" target="_blank"></a>  </li>`
+            }).join('')
+            //  })
+
+        })//DOMContentLoaded的触发会早于window.onload。
+
+        /*  document.getElementById('btn').addEventListener("click", () => {
+             console.log("click");
+         }) */
+
+    </script>
+</body>
+
+</html>

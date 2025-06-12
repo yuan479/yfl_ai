@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 异步任务
+        // fatch   网络请求
+        //es6 的promise  异步变同步的解决方案
+        //promise是一个构造函数 实例化是需要的参数，传入一个函数 立即运行
+        const p = new Promise((resolve) => {//同步
+            console.log("333");//立即执行
+
+            setTimeout(() => {//定时器注册
+                console.log("222");
+                resolve();
+            }, 10)
+        })
+
+        // promise 实例 prototype 上有一个then方法  传入两个函数 第一个函数是成功的回调 第二个函数是失败的回调
+        console.log(p);
+
+        p.then(() => {
+            console.log("111");
+        })
+        //console.log("111");
+        // 同步任务
+        //进程CPU分配最小资源
+        // 微任务  微任务执行完  宏任务才会执行
+    </script>
+</body>
+</html>
