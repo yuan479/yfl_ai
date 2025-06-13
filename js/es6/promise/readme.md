@@ -1,4 +1,4 @@
-# promoce
+# promise
 
 - cCPU轮询
 - 同步任务，异步任务
@@ -40,4 +40,3 @@
 - promise.then 升级到 async await 成对出现
   async 用于修饰函数，函数里面有异步任务
   await 等待异步任务完成，异步变同步
-  
