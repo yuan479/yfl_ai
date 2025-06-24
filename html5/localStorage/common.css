@@ -18,6 +18,34 @@ html {
   background: rgba(255,255,255,0.8);
   box-shadow: 0px 3px 20px 10px rgba(0,0,0,0.95);
 }
-body {
-  color: #ffc0cb;
+.wrapper h2 {
+  text-align: center;
+  margin: 0;
+  font-weight: 200;
+}
+.plates {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  list-style: none;
+}
+.plates li {
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  padding: 10px 5px 0px;
+  display: flex;
+}
+.plates li label {
+  flex: 1;
+  cursor: pointer;
+}
+.plates li input {
+  display: none;
+}
+.plates li .add-items {
+  margin-top: 20px;
+}
+.plates li .add-items input {
+  padding: 10px;
+  outline: 0;
+  border: 1px solid rgba(0,0,0,0.1);
 }

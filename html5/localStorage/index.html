@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta data-n-head="ssr" name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover"><!-- user-scalable=no 禁止手机上放大 -->
     <title>Document</title>
 </head>
 <link rel="stylesheet" href="./common.css">
@@ -11,6 +11,21 @@
         <div class="box">第1个盒子</div>
         <div class="box">第2个盒子</div>
         <h2>Local tapas</h2>
+        <p>请添加您的tapas</p>
+        <ul class="plates">
+            <li>loading</li>
+        </ul>
+        <form action="" class="add-items">
+            <input 
+            type="text"
+            placeholder="item name"
+            required
+            name="item"
+            >
+            <input type="submit" value="+ add item">
+
+        </form>
     </div>
+    <script src="./common.js"></script>
 </body>
 </html>
