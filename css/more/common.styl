@@ -1,34 +1,32 @@
 .container
     max-width: 600px
-    margin 0 auto
+    margin: 0 auto
     padding: 10px 20px
     font-family: Arial, sans-serif
   
-   
     h1
         text-align: center
+
     p
         line-height 1.6 // 设置行高为1.6倍 默认大小为16px，即16px*1.6=25.6px
+
     .more
         background-color: pink
         color:aqua
         text-decoration: none
         position relative
         transition: all .3s ease // 添加过渡效果: 所有属性变化, 持续时间为0.3秒, 缓动函数为ease
-        // 伪元素选择器，选择more元素的伪元素
         &::before
-            content "start" // 设置伪元素的内容为空
+            content "" // 设置伪元素的内容为空
             position absolute // 绝对定位
-            bottom  0
+            bottom 0
             left 0
             width 100%
             height: 2px
             background-color #6961ff
-        &::after
-            content "end" // 设置伪元素的内容为空
-            position absolute // 绝对定位
-            bottom  0
-            left 0
-            width 100%
-            height: 2px
-            background-color #ff6e6e
+            transform scaleX(0) // 初始状态下水平方向上的缩放比例为0
+            transform-origin bottom right // 缩放的原点为底部右方
+            transition transform .3s ease // 添加过渡效果: 缩放属性变化, 持续时间为0.3秒, 缓动函数为ease
+        &:hover::before
+            transform scaleX(1) // 鼠标悬停时水平方向上的缩放比例为1
+            transform-origin bottom right  // 缩放的原点为底部左方

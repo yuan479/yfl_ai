@@ -18,20 +18,18 @@
   transition: all 0.3s ease;
 }
 .container .more::before {
-  content: "start";
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 2px;
   background-color: #6961ff;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
 }
-.container .more::after {
-  content: "end";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #ff6e6e;
+.container .more:hover::before {
+  transform: scaleX(1);
+  transform-origin: bottom right;
 }
