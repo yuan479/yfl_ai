@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js 动画</title>
+</head>
+<style>
+    .box {
+        width: 0px;
+        height: 100px;
+       /*  position: relative;
+        left: 0;
+        top: 0; */
+        background-color: gold;
+    }
+    .box1 {
+        width: 100px;
+        height: 100px;
+       /*  position: relative;
+        left: 0;
+        top: 0; */
+        background-color: rgb(88, 88, 88);
+    }
+</style>
+
+<body>
+    <!-- <button onclick=move()>开始动</button> -->
+    <div class="box"></div>
+    <div class="box1"></div>
+    <script>
+        const box = document.querySelector('.box');
+        let width = 0; // 初始位置
+        function move() {
+            width += 2; // 每次移动2px
+            box.style.width = width + 'px';
+            if (width < 300) {
+                requestAnimationFrame(move); // 递归调用
+                
+            }
+        }
+      move(); 
+    </script>
+</body>
+
+</html>

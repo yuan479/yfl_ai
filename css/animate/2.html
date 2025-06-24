@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        width: 100px;
+        height: 100px;
+        background-color: gold;
+        position: relative;
+        left: 0;
+        top: 0;
+        transition: left 1s ease-out;
+    }
+    .box.active{
+        left: 300px;
+    }
+</style>
+<body>
+    <div class="box"></div>
+    <script>
+        //js是阻塞的，所以要先加载css，再加载js
+        
+       document.addEventListener('DOMContentLoaded', function() {
+            //html和css加载完毕，浏览器中结合还未完成
+            //event loop事件循环，先执行同步代码，再执行异步代码
+            //虽然时间是0，但是setTimeout是一个宏任务，会在宏任务队列中等待html+css加载完毕后再执行
+            //页面的渲染比setTimeout优先级高
+            setTimeout(() => {
+                // 给元素添加一个类名active，这个类名会触发box的transition属性，从而实现动画效果
+                document.querySelector('.box').classList.add('active');
+            }, 0);
+       })
+
+       /*  setTimeout(() => {
+            // 给元素添加一个类名active，这个类名会触发box的transition属性，从而实现动画效果
+            document.querySelector('.box').classList.add('active');
+        }, 1000); */
+       
+    </script>
+</body>
+</html>
