@@ -11,16 +11,57 @@
         width: 100px;
         height: 50px;
         background-color: pink;
-        transition: transform 0.5s ease;
+      /*   transition: transform 0.5s ease; */
     }
 
-    .box:hover {
+  /*   .box:hover {
         transform: translateX(100px);
-    }
+    } */
 </style>
 
 <body>
     <div class="box"></div>
+    <script>
+        // 获取元素
+const box = document.querySelector('.box');
+
+// 定义动画参数
+const duration = 500; // 动画时长（毫秒）
+const distance = 100; // 移动距离（像素）
+
+// 模拟 CSS transition 的缓动函数（ease）
+function ease(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
+
+// 动画核心函数
+function animate(targetX, callback) {
+    const startTime = performance.now();
+    const startX = parseFloat(box.style.transform?.match(/translateX\(([^)]+)/)?.[1] || 0);
+
+    function step(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = ease(progress);
+        const currentX = startX + (targetX - startX) * easedProgress;
+        box.style.transform = `translateX(${currentX}px)`;
+        if (progress < 1) {
+            requestAnimationFrame(step);
+        } else if (callback) {
+            callback();
+        }
+    }
+    requestAnimationFrame(step);
+}
+// 鼠标进入时执行动画
+box.addEventListener('mouseenter', () => {
+    animate(distance);
+});
+// 鼠标离开时恢复位置
+box.addEventListener('mouseleave', () => {
+    animate(0);
+});
+    </script>
 </body>
 
 </html>

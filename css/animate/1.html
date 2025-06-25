@@ -8,39 +8,34 @@
 </head>
 <style>
     .box {
-        width: 0px;
-        height: 100px;
-       /*  position: relative;
+        width: 60px;
+        height: 40px;
+        position: relative;
         left: 0;
-        top: 0; */
+        top: 0;
         background-color: gold;
-    }
-    .box1 {
-        width: 100px;
-        height: 100px;
-       /*  position: relative;
-        left: 0;
-        top: 0; */
-        background-color: rgb(88, 88, 88);
     }
 </style>
 
 <body>
-    <!-- <button onclick=move()>开始动</button> -->
-    <div class="box"></div>
-    <div class="box1"></div>
+
+    <div class="box"></div><br/>
+ <!--    <button onclick=move()>开始动</button> -->
     <script>
         const box = document.querySelector('.box');
-        let width = 0; // 初始位置
+        let left = 0; // 初始位置
+        let right = 60
         function move() {
-            width += 2; // 每次移动2px
-            box.style.width = width + 'px';
-            if (width < 300) {
+            left += 2; // 每次移动2px
+            right += 2;
+            box.style.left = left + 'px';
+            box.style.right = right + 'px';
+            if (left < 120 && right < 180) {
                 requestAnimationFrame(move); // 递归调用
-                
+
             }
         }
-      move(); 
+        move()
     </script>
 </body>
 
