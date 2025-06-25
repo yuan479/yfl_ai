@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js请求</title>
+</head>
+
+<body>
+    <ul id="repos"></ul>
+
+    <script>
+        //domContentLoaded 生命周期事件，当dom加载完毕后，执行回调函数
+        //DOMContentLoaded 是一个在初始 HTML 文档加载并解析完成后立即触发的事件，不等待样式表、图片等外部资源加载完成
+
+        //现在js在html前，会阻塞
+        //它比window.onload 更晚触发
+        /* document.addEventListener('DOMContentLoaded', ()=>{
+       console.log(document.getElementById('repos'));
+        }) */
+        // api：接口地址
+        // www.bilibili.com 网站地址，用户访问的地址
+        // http://api.github.com/users/yuan479
+        // json 格式 数据返回
+        // 资源
+        //后端 node js go 开发
+        //前端通过js fetch 主动拉取资源  --> 前后端分离，有了web2.0时代的动态页面
+        //前端可以自己做主
+
+        /* document.addEventListener('DOMContentLoaded', () => {
+            //then 的链式调用有些繁琐
+            //es6 
+            fetch('http://api.github.com/users/yuan479/repos')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('repos').innerHTML = data.map(item => `<li>${item.name}</li>`)
+                        .join('')
+                })
+        }) */
+
+        //下面是优化后的代码
+        //它和同步代码一样
+        //es8 async await 异步编程
+        //await 后面是一个promise实例 Promise{} fetch的本质是返回一个promise实例
+
+        // pending 等待状态
+       
+            console.log(fetch('http://api.github.com/users/yuan479/repos'))
+            // resolve() fullfilled 完成状态
+            //reject() rejected 拒绝状态
+            const result = await fetch('http://api.github.com/users/yuan479/repos')
+            const data = await result.json()
+            // console.log(data);
+            document.getElementById('repos').innerHTML = 
+            data.map(item => `<li>${item.name}</li>`).join('')
+        
+
+
+    </script>
+</body>
+
+</html>

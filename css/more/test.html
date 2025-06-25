@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+.button {
+  position: relative; /* 为伪元素提供定位参考 */
+}
+.button::before {
+  content: ""; /* 插入空内容 */
+  position: absolute; /* 定位到按钮底部 */
+  bottom: 0;
+  left: 0;
+  width: 0%; /* 初始宽度为 0 */
+  height: 2px; /* 下划线高度 */
+  background: #6961ff; /* 下划线颜色 */
+  transition: width 0.3s ease; /* 添加过渡动画 */
+}
+.button:hover::before {
+  width: 100%; /* 悬停时扩展到 100% 宽度 */
+}
+  </style>
+</head>
+<body>
+    <button class="button">点击我啊~，杂鱼~</button>
+</body>
+</html>

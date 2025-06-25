@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=\, initial-scale=1.0">
     <title>伪元素有何用</title>
 </head>
 <style>
-    .box{
-        height: 100px;
-        background-color: #ccc;
-        text-align: right;
-        line-height: 100px;
-        padding: 0 10px;
-        font-size: 20px;
+    .more {
+        width: 200px;
+        color: pink;
+        text-decoration: none;
+        position: relative;
+        transition: all 1s ease;
+    }
+
+    .more::before {
+        content: "";/* 必须声明 */
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: aqua;
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 1s ease;
+    }
+
+    .more:hover::before {
+        transform: scaleX(1);
+        transform-origin: bottom left;
     }
 </style>
+
 <body>
-    <div class="box">
-        &gt;
+    <div class="container">
+        <h1 class="more">这是一个标题</h1>
+        <p>这是一个段落</p>
+        <a href="#">查看更多</a>
     </div>
 </body>
+
 </html>
