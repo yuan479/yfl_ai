@@ -5,8 +5,8 @@
 
 - <img src=""/>
   - 浏览器的下载线程
-  - src http 应用层协议
-  - ip 地址
+  - src http 应用层协议 
+  - 把http 地址查询得到 ip 地址
   - 在网络路径之中传输，但是网络带宽是有限的
     高并发 同时下载多个css，img 支持比较好的
     tcp/ip
@@ -19,4 +19,16 @@
     - 加载什么东西？ 可视区的内容
     - 滚动区域 scroll事件
   - 不加载
-    - src 不能直接给， data-original 自定义属性
+    - src 不能直接给， data-original 自定义属性  
+      当 data-original 作为自定义属性使用时，它通常会被赋予一个图像或其他媒体资源的 URL。这个 URL 指定了应该在适当的时机（例如，当元素接近用户的视口时）加载的实际资源位置。JavaScript 代码会监听相关事件，并在满足条件时将 data-original 中的值赋给实际的 src 属性（对于 <img> 标签而言），从而触发资源的加载。
+      举个例子，在图片懒加载的情况下：
+      <img data-original="image.jpg" alt="Lazy load image">
+      这里的 data-original="image.jpg" 表示 image.jpg 是需要懒加载的图片地址。通过 JavaScript，当这个 <img> 元素接近用户的视窗时，它的 src 属性会被动态设置为 data-original 的值，从而实现图片的懒加载，有助于提高页面加载速度和性能。
+      - src是什么？ img 的功能函数？ 不能直接给，要给个占位？京东占位图为背景颜色
+  - 为什么要有占位图？
+    - 它首先会加载一个src ，src应该设置，但不能请求原来图片的地址，防止它并发太多，图片太大
+      给的占位图片比较小，只请求一次，之后会缓存
+    - 等页面渲染结束后，
+      img太多会严重影响页面的打开速度，打开速度第一重要
+      图片还是在url里面去请求，但是他在data-original 里面 自定义属性
+
