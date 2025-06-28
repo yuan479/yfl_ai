@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- 定义文档类型为HTML5，并指定语言为英语 -->
 
 <head>
     <meta charset="UTF-8">
+    <!-- 设置文档字符编码为UTF-8 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 确保页面在移动设备上正确缩放 -->
     <title>图片懒加载</title>
+    <!-- 页面标题 -->
 </head>
 <style>
     * {
@@ -12,56 +16,89 @@
         padding: 0;
     }
 
+    /* 移除所有元素默认的外边距和内边距 */
     .image-item {
-        width: 100px;
-        height: 100px;
-        margin-bottom: 100px;
+        width: 900px;
+        height: 900px;
+        margin-bottom: 10px;
     }
 
+    /* 定义图片项的宽度、高度以及底部外边距 */
     body {
         background-color: #000;
     }
+
+    /* 设置页面背景颜色为黑色 */
 </style>
 
 <body>
     <img class="image-item" lazyload="true" src="../../image/ee58485192b98775f8be54bab191c5d6_8416893113397816846.gif"
         data-original="https://img.36krcdn.com/hsossms/20250313/v2_15ad8ef9eca34830b4a2e081bbc7f57a@000000_oswg172644oswg1536oswg722_img_000?x-oss-process=image/resize,m_mfit,w_960,h_400,limit_0/crop,w_960,h_400,g_center" />
+    <!-- 图片元素，使用data-original属性存储实际图片链接，src为占位图 -->
+
     <img class="image-item" lazyload="true" src="../../image//fe9036c4c7b04fa4695979610fb8754a_5288865507127771927.gif"
         data-original="https://img.36krcdn.com/hsossms/20250312/v2_aeaa7a1d51e74c3a8f909c96cd73a687@000000_oswg169950oswg1440oswg600_img_jpeg?x-oss-process=image/format,webp" />
+    <img class="image-item" lazyload="true" src="../../image//fe9036c4c7b04fa4695979610fb8754a_5288865507127771927.gif"
+        data-original="https://img.36krcdn.com/hsossms/20250312/v2_aeaa7a1d51e74c3a8f909c96cd73a687@000000_oswg169950oswg1440oswg600_img_jpeg?x-oss-process=image/format,webp" />
+    <img class="image-item" lazyload="true" src="../../image//fe9036c4c7b04fa4695979610fb8754a_5288865507127771927.gif"
+        data-original="https://img.36krcdn.com/hsossms/20250312/v2_aeaa7a1d51e74c3a8f909c96cd73a687@000000_oswg169950oswg1440oswg600_img_jpeg?x-oss-process=image/format,webp" />
+    <img class="image-item" lazyload="true" src="../../image//fe9036c4c7b04fa4695979610fb8754a_5288865507127771927.gif"
+        data-original="https://img.36krcdn.com/hsossms/20250312/v2_aeaa7a1d51e74c3a8f909c96cd73a687@000000_oswg169950oswg1440oswg600_img_jpeg?x-oss-process=image/format,webp" />
+    <img class="image-item" lazyload="true" src="../../image//fe9036c4c7b04fa4695979610fb8754a_5288865507127771927.gif"
+        data-original="https://img.36krcdn.com/hsossms/20250312/v2_aeaa7a1d51e74c3a8f909c96cd73a687@000000_oswg169950oswg1440oswg600_img_jpeg?x-oss-process=image/format,webp" />
+    <img class="image-item" lazyload="true" src="../../image//fe9036c4c7b04fa4695979610fb8754a_5288865507127771927.gif"
+        data-original="https://img.36krcdn.com/hsossms/20250312/v2_aeaa7a1d51e74c3a8f909c96cd73a687@000000_oswg169950oswg1440oswg600_img_jpeg?x-oss-process=image/format,webp" />
+    <img class="image-item" lazyload="true" src="../../image//fe9036c4c7b04fa4695979610fb8754a_5288865507127771927.gif"
+        data-original="https://img.36krcdn.com/hsossms/20250312/v2_aeaa7a1d51e74c3a8f909c96cd73a687@000000_oswg169950oswg1440oswg600_img_jpeg?x-oss-process=image/format,webp" />
+
     <script>
         const viewHeight = document.documentElement.clientHeight;
+        /* 获取浏览器窗口的高度 */
         console.log(viewHeight);
+        /* 在控制台输出浏览器窗口的高度 */
         const eles = document.querySelectorAll('img[data-original][lazyload]');
-        console.log(eles);//eles是一个伪数组
+        /* 使用querySelectorAll方法选择所有带有"data-original"和"lazyload"属性的img元素 */
+        console.log(eles);
+        /* 输出所选元素集合（伪数组） */
         window.lazyload = function () {
+            /* 定义全局函数lazyload，用于实现图片懒加载 */
             Array.prototype.forEach.call(eles, function (item, index) {
+                /* 遍历所有的img元素 */
                 console.log(item);
-                //没有值，退出data-original item.dataset.original
+                /* 输出当前遍历到的img元素 */
                 if (item.dataset.original === "") return;
-                //img 标签对象在可视区中的位置
-                let rect = item.getBoundingClientRect();//获取元素的位置信息
+                /* 如果"data-original"属性为空，则跳过该元素 */
+                let rect = item.getBoundingClientRect();
+                /* 获取当前img元素相对于视窗的位置 */
                 console.log(rect);
+                /* 输出位置信息 */
                 if (rect.bottom >= 0 && rect.top <= viewHeight) {
-                    // 有必要渲染
-                    (function () {//闭包,专门做图片的加载
-                        var img = new Image(); //我们使用内存中的img对象
-                        /*  document.body.appendChild(img); */
+                    /* 判断元素是否在可视区域内 */
+                    (function () {
+                        /* 使用闭包确保每个img对象单独处理 */
+                        var img = new Image();
+                        /* 创建一个新的Image对象 */
                         img.src = item.dataset.original;
+                        /* 设置新创建的Image对象的src属性为"data-original"中的值 */
                         img.onload = function () {
-                            // 图片加载完成
-                            // cache 缓存，一次性加载出整个图片
-                            // 异步加载
-                            item.src = item.dataset.original; //如果图片太大，网速慢，图片会从上到下慢慢画出来
-                            item.removeAttribute('data-original');//移除 实现垃圾回收，不用再迭代item
+                            /* 当图片加载完成时触发 */
+                            item.src = item.dataset.original;
+                            /* 将真实的图片地址赋给img元素的src属性 */
+                            item.removeAttribute('data-original');
+                            /* 移除"data-original"属性以避免重复加载 */
                             item.removeAttribute('lazyload');
+                            /* 移除"lazyload"属性 */
                         }
                     })()
                 }
             })
         }
         window.removeEventListener('scroll', lazyload);
+        /* 尝试移除已存在的滚动事件监听器（此行可能不需要） */
         document.addEventListener('DOMContentLoaded', lazyload);
-        window.addEventListener('scroll', lozyload)
+        /* 页面加载完成后执行lazyload函数 */
+        window.addEventListener('scroll', lazyload)
+        /* 监听窗口滚动事件并调用lazyload函数 */
     </script>
 </body>
 
