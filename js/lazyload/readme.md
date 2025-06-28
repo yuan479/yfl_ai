@@ -35,4 +35,17 @@
       当页面加载完成后，会把data-original 里面的内容赋值给src
       图片的原地址是img 数据 original 原来的地址
 
+- 性能问题
+  - 懒加载解决了性能问题 解决了首屏加载速度
+  - 但是onSroll 事件触发次数太多 js性能，不是渲染性能
+  - ForEach 所有imgs 
+  - 懒加载中getBoundingClientRect api 会触发回流，影响性能
 
+
+
+- 防抖 节流
+  - InterSectionObserver  监听元素
+    - observer 观察 异步的，不是同步的 在浏览器后台运行
+    - intersection rect 交叉 你的元素是否和可视区交叉
+    - 它不再需要onscroll，不需要节流
+ 
