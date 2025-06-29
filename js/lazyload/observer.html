@@ -47,44 +47,62 @@
                         a++
                         console.log(a);
                 } */
-        function addObserver() {
-                //这些都应该被监听
-                const eles = document.querySelectorAll('img[data-original][lazyload]');
-                console.log(eles);
-              /*   eles.forEach(ele => {
-                        console.log(ele)
-                }) */
-               //[eles[0],eles[1],eles[2]]
-               //把eles类数组转化为数组 方案1
-              /*  [...eles].map(ele =>{
-                        console.log(ele,'???')
-                        }) */
-               //把eles类数组转化为数组 方案2
-                 /* Array.from(eles).map(ele =>{
-                        console.log(ele,'!!!')
-                        }) */
-                  //把eles类数组转化为数组 方案3
-                /* Array.prototype.map.call(eles,ele=>{
-                        console.log(ele,'。。。')
-                }) */
+                function addObserver() {
+    // 获取所有具有 data-original 属性和 lazyload 类的 img 元素，这些图片将被监听是否进入视口（懒加载目标）
+    const eles = document.querySelectorAll('img[data-original][lazyload]');
+    
+    // 打印获取到的 NodeList 类数组对象（包含所有待懒加载的 img 元素）
+    console.log(eles);
 
-                const observer = new IntersectionObserver(function(changes){
-                        console.log(changes);
-                        changes.forEach(function(element){
-                                console.log(element,element.target)
-                                if(element.intersectionRatio>0&& element.intersectionRatio<=1){
-                                        element.target.src=element.target.dataset.original;
-                                }
-                        })
-                })
-               eles.forEach((item)=>{
-                //每个都监听  浏览器作为观察者
-                // item 被观察的元素
-                //设计模式中的观察者模式
-                observer.observe(item);
-               })
-        }
-        addObserver()
+    // 可选：遍历打印每个元素（当前被注释掉）
+    /*   eles.forEach(ele => {
+            console.log(ele)
+    }) */
+
+    // 方案1：将类数组转化为数组并遍历打印每个元素（当前被注释掉）
+    /*  [...eles].map(ele =>{
+            console.log(ele,'???')
+        }) */
+
+    // 方案2：使用 Array.from 将类数组转化为数组并遍历打印每个元素（当前被注释掉）
+    /*  Array.from(eles).map(ele =>{
+            console.log(ele,'!!!')
+        }) */
+
+    // 方案3：使用 call 绑定 this 并调用 map 遍历类数组并打印每个元素（当前被注释掉）
+    /*  Array.prototype.map.call(eles,ele=>{
+            console.log(ele,'。。。')
+    }) */
+
+    // 创建一个 IntersectionObserver 实例，用于监听目标元素是否进入视口
+    const observer = new IntersectionObserver(function(changes){
+        // 打印观察到的变化列表（IntersectionObserverEntry 对象数组）
+        console.log(changes);
+        
+        // 遍历每一个变化项
+        changes.forEach(function(element){
+            // 打印每个变化项及其 target（即被观察的 DOM 元素）
+            console.log(element, element.target);
+
+            // 如果元素在视口内可见（交集比例大于0且小于等于1）
+            if (element.intersectionRatio > 0 && element.intersectionRatio <= 1) {
+                // 将图片的 src 设置为 data-original 的值（开始加载真实图片）
+                element.target.src = element.target.dataset.original;
+            }
+        })
+    })
+
+    // 遍历所有要监听的 img 元素
+    eles.forEach((item) => {
+        // 调用 observe 方法，让 observer 开始监听 item（img 元素）
+        // item 是被观察的目标元素
+        // 这里应用的是设计模式中的观察者模式
+        observer.observe(item);
+    })
+}
+
+// 调用 addObserver 函数启动懒加载监听机制
+addObserver()
 </script>
 </body>
 
