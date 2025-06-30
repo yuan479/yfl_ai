@@ -60,7 +60,7 @@ funcB();//我是全局变量  我是全局函数 funA */
 outer(); 
 //console.log(a); // 报错：ReferenceError: a is not defined（函数作用域变量外部不可见） */
 
-/* function foo(){
+function foo(){
     console.log(funcVar); // 输出: undefined（函数作用域变量外部不可见）
     if (true) {
         console.log(blockVar); // 报错：ReferenceError（TDZ）
@@ -77,13 +77,13 @@ console.log(blockVar); // 报错：ReferenceError（块级作用域变量外部�
 }
 
 //console.log(blockVar); //  报错：ReferenceError（块级作用域变量外部不可见）
-foo(); */
+foo();
 
-function outer() {
+/* function outer() {
     var outerVar = "我是外部函数变量"; 
     function inner() {
         console.log(outerVar); // 输出 "我是外部函数变量"
     }
     inner(); // 调用内部函数 inner()
 }
-outer(); // 输出 "我是外部函数变量"
+outer(); // 输出 "我是外部函数变量" */
