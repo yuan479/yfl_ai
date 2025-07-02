@@ -1,0 +1,16 @@
+/* 固定大小 */
+.upload img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover; /* 裁剪超出部分，保持比例 */
+  }
+#selectImage{
+    display:none;
+}
+.input{
+    width: 200px;
+}
+.preview img{
+    max-width: 100%;
+    
+}

@@ -1,0 +1,7 @@
+.container{
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  /* 用渐变色来代替jpg,png 背景图片做背景，比单一颜色更好看 */
+  background:linear-gradient(180deg,pink 40%,aqua 100%);/* 每一个属性： 角度钟表指向顺时针，初始颜色，颜色占比，结尾颜色，渐变率 */
+}
