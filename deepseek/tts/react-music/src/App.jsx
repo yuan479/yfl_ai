@@ -1,51 +1,50 @@
-import { useState, useRef } from 'react'
-
-import './App.css'
+import { useState, useRef } from 'react';
+import './App.css';
 
 function App() {
-  //火山引擎tts配置文件
+  // 火山引擎 TTS 配置文件
   const TOKEN = 'Knhk-LgHTDtoJ5J2Sh2eLTdk0o8xYXZR';
   const APP_ID = '6239060583';
   const CLUSTER_ID = 'volcano_tts';
-  //代码的刻度
-  const [propt, setPropt] = useState('大家好')
 
-  //react use 开头 ref hook 可以获取DOM元素
-  const audioPlayer = useRef(null)
-  /*  console.log(audioPlayer,'//////') */
+  // 状态变量（建议使用语义化名称）
+  const [prompt, setPrompt] = useState('大家好');
+
+  // 获取 DOM 元素的 ref
+  const audioPlayer = useRef(null);
 
   const playMusic = () => {
-    /*    console.log(audioPlayer,'///////') */
-    /*  console.log('你点击了播放') */
-    audioPlayer.current.play()
-    const audio = document.querySelector('audio')
-    audio.play()
-  }
+    if (audioPlayer.current) {
+      audioPlayer.current.play();
+    }
+  };
+
   const generateAudio = () => {
+    // 此处添加生成音频的逻辑
+    console.log('生成音频:', prompt);
+  };
 
-  }
   return (
-
     <>
       <div className='container'>
         <div>
-          <label htmlFor="">
+          <label htmlFor="promptInput">
             <button onClick={generateAudio}>生成并播放</button>
-            <textarea className="input" value={prompt} onChange={e}=>{setPropt
+            <textarea
+              id="promptInput"
+              className="input"
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+            />
+          </label>
+        </div>
+      </div>
 
-            }
-          </textarea>
-        </label>
-      
-    </div >
-</div >
-
-    </div >
       <audio ref={audioPlayer} src="/sounds/snare.wav"></audio>
-      <button onClick={playMusic}> 播放 </button>
+      <button onClick={playMusic}>播放</button>
       <button onClick={() => alert('hi~，想我了吗')}>更原始的事件，如初恋般</button>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
