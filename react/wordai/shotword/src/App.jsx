@@ -82,6 +82,8 @@ const uploadImage =async (imgData)=>{
 
    </div>
   )
+
+  
 }
 
 export default App
