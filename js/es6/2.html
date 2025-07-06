@@ -14,9 +14,9 @@
         // JSON 数组
         // 数据
         const friends = [
-            { name: '御坂美琴', age: 14, address: '常台盘' },
-            { name: '白井黑子', age: 13, address: '常台盘' },
-            { name: '佐天泪子', age: 15, address: '一中' }
+            { name: '刘备', age: 520, address: '桃园' },
+            { name: '关羽', age: 114, address: '同上' },
+            { name: '张飞', age: 514, address: '俺也一样' }
         ];
         // DOM 编程
         const ul = document.querySelector('#friends');
@@ -42,8 +42,8 @@
             return `
                 <li>
                     ${friend.name} 
-                    - <i>${friend.age}岁</i> 
-                    - <b>${friend.address}</b>
+                    ， <i>${friend.age}岁</i> 
+                    ， <b>${friend.address}</b>
                 </li>
                 `;
         }).join('');

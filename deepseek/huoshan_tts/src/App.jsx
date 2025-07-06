@@ -22,10 +22,9 @@ import './App.css' // 引入样式文件 App.css
 function App() {
   // 配置：从环境变量中读取 VITE_TOKEN、VITE_APP_ID 和 VITE_CLUSTER_ID
   const { VITE_TOKEN, VITE_APP_ID, VITE_CLUSTER_ID } = import.meta.env
-  console.log(VITE_TOKEN, VITE_APP_ID, VITE_CLUSTER_ID, '<----------') // 打印环境变量信息，便于调试
 
   // 状态 prompt: 存储用户输入的文本内容，初始值为 'hi~，想我了吗？'
-  const [prompt, setPrompt] = useState('hi~，想我了吗？')
+  const [prompt, setPrompt] = useState('妖精！吃俺老孙一棒！')
 
   // 状态 status: 用于控制界面状态，可以是 "准备"、"loading" 或 "done"
   const [status, setStatus] = useState("准备")
@@ -105,8 +104,6 @@ function App() {
     }
     ).then(res=>res.json()) // 将响应解析为 JSON 数据
     .then(data=>{
-      console.log(data,'!!!!!!!!!!!!!!') // 打印返回的数据，便于调试
-
       // 调用 createBlobURL 方法将 Base64 数据转为音频 URL
       const url = createBlobURL(data.data);
 
@@ -122,7 +119,7 @@ function App() {
   return (
     <div className='container'>
       <div>
-        <label >Prompt</label><br/>
+        
         {/* 点击按钮后触发 generateAudio 函数 */}
         <button onClick={generateAudio}>点我啊~</button><br />
         

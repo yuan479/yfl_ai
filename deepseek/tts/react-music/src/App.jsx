@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   // 火山引擎 TTS 配置文件
   const TOKEN = 'Knhk-LgHTDtoJ5J2Sh2eLTdk0o8xYXZR';
-  const APP_ID = '6239060583';
+  const APP_ID = '6037776958';
   const CLUSTER_ID = 'volcano_tts';
 
   // 状态变量（建议使用语义化名称）
