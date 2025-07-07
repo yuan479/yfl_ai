@@ -3,5 +3,14 @@
     padding: 0;
 }
 body{
-    background:linear-gradient(0deg, red, #ff8c20, yellow, rgb(0, 255, 0), aqua, blue ,purple 100%);
+    
+    background:linear-gradient(1800deg,pink 30%, aqua 100%);
+}
+.container{
+    margin-left: 20px;
+}
+.preview img{
+    width: 60%;
+    height: 60%;
+    
 }
