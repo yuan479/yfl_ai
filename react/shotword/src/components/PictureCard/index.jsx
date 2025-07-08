@@ -26,10 +26,10 @@ const PictureCard = (props) => {
 
 
     }
-const playAudio = () => {
-    const audioEle = new Audio(audio);
-    audioEle.play();
-}
+    const playAudio = () => {
+        const audioEle = new Audio(audio);
+        audioEle.play();
+    }
 
     return (
         <div className="card">

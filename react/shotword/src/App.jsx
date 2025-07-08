@@ -30,9 +30,9 @@ function App() {
   const uploadImg = async (imageData) => {
     setImgPreview(imageData);
     const endpoint = 'https://api.moonshot.cn/v1/chat/completions';
-    const headers = { 
-      'Content-Type': 'application/json', 
-      'Authorization': `Bearer ${import.meta.env.VITE_KIMI_API_KEY}` 
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${import.meta.env.VITE_KIMI_API_KEY}`
     };
     setWord('分析中...');
     const response = await fetch(endpoint, {
@@ -40,20 +40,21 @@ function App() {
       headers: headers,
       body: JSON.stringify({
         model: 'moonshot-v1-8k-vision-preview',
-        messages: [ 
-          { 
-            role: 'user', 
+        messages: [
+          {
+            role: 'user',
             content: [
-              { 
-                type: "image_url", 
-                image_url: { "url": imageData, }, 
-              }, 
-              { type: "text", text: userPrompt, 
+              {
+                type: "image_url",
+                image_url: { "url": imageData, },
+              },
+              {
+                type: "text", text: userPrompt,
 
-              }] 
-            }],
-            stream: false
-        })
+              }]
+          }],
+        stream: false
+      })
     })
     const data = await response.json();
     const replyData = JSON.parse(data.choices[0].message.content);
@@ -66,7 +67,7 @@ function App() {
     // base64 资源 比较小 -> atob -> unit8Array -> blob -> url.createObjectURL -> 临时地址 -> audio展示
 
     const audioUrl = await generateAudio(replyData.representative_word);
-    console.log(audioUrl,'app');
+    console.log(audioUrl, 'app');
     setAudio(audioUrl);
   }
 
@@ -84,23 +85,23 @@ function App() {
           {
             detailExpand ? (
               <div className="expand">
-                <img src={imgPreview} alt="preview"/>
-                {               
-                  explainations.map((explaination,index) => (
+                <img src={imgPreview} alt="preview" />
+                {
+                  explainations.map((explaination, index) => (
                     <div key={index} className="explaination">
                       {explaination}
                     </div>
                   ))
                 }
               </div>
-            ): (
+            ) : (
               <div className="fold" />
             )
           }
           {
-            expReply.map((reply,index)=>{
+            expReply.map((reply, index) => {
               return <div key={index} className="reply">
-                {reply} 
+                {reply}
               </div>
             })
           }
