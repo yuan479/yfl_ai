@@ -30,6 +30,7 @@
         // DOM0 和DOM2 混合，不好维护
         // addEventListener 统一用useCapture 能力
         document.getElementById('parent').addEventListener('click',function(event){
+           console.log(event.target)
             console.log('parent')
         },true)
         document.getElementById('parent').addEventListener('click',function(event){

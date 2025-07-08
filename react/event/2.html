@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="myList">
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+        <li>item4</li>
+    </ul>
+    <script>
+        //点击li 打印对应的item
+        // 能否一次性给所有的li 注册事件?
+        const lis = document.querySelectorAll('ul#myList li')
+        //不可以在一个伪数组一次性声明，addEventListener 一定是个DOM对象，而不是一个伪数组
+       /*  lis.addEventListener('click',function(event){
+            console.log(event.target,'!!!')
+        },false) */
+        for(let item of lis){//es6 新的循环 计数循环，对cpu友好，机械化，可读性差
+            //向浏览器event loop 注册了一堆事件 监听器？ 性能差 
+            // 没有必要向每个li 注册事件，只需要向ul 注册事件，事件冒泡
+            item.addEventListener('click',function(event){
+                console.log(event.target.innerText,'!!!')
+            },false)
+        }
+        //event target 属于目标阶段，是事件发生在的元素，而不是事件监听的元素
+        //委托给父元素，react 性能优化到极致，甚至直接找到 #root 挂载点
+        document.getElementById('myList').addEventListener('click',function(event){
+            console.log(event.target.innerText,'!!!')
+        },false)
+    </script>
+</body>
+</html>
