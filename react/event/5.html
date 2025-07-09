@@ -5,9 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    #menu{
+        display:none;
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        padding:20px;
+        background-color: grey;
+        border: 2px solid black;
+    }
+</style>
 <body>
-     <script>
+    <div id="toogleBtn">
+        toogleBtn
+        <div id="menu">
+            menu
+            <p>menu-p</p>
+            <a href="http://www.badu.com" id="closeInside">menu-a</a>
+            <button id="closeInside">Don`t closed</button>
+        </div>
+    </div>
+    <script>
+        const toggleBtn = document.getElementById('toogleBtn')
+        const menu = document.getElementById('menu')
         const closeInside = document.getElementById('closeInside')
-     </script>
+
+        toggleBtn.addEventListener('click',function(e){
+            menu.style.display = menu.style.display==='block'?'none':'block'
+        })
+
+        closeInside.addEventListener('click',function(e){
+            e.preventDefault()
+            e.stopPropagation()
+            alert('clicked')
+        })
+    </script>
 </body>
 </html>
