@@ -29,15 +29,15 @@
         // js 事件也不要用DOM0,html js 耦合在一起
         // DOM0 和DOM2 混合，不好维护
         // addEventListener 统一用useCapture 能力
-        document.getElementById('parent').addEventListener('click',function(event){
+    /*     document.getElementById('parent').addEventListener('click',function(event){
            console.log(event.target)
             console.log('parent')
-        },true)
+        },true) */
         document.getElementById('parent').addEventListener('click',function(event){
-            console.log(event.clientX,event.clientY)
+            console.log()
         },true)
            document.getElementById('child').addEventListener('click',function(event){
-            console.log('child')
+            console.log()
         },false)//改为true 就会打开冒泡
     </script>
 </body>

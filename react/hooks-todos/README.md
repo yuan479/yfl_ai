@@ -30,3 +30,35 @@
     rem 相对于html font-size
     vh 相对于视窗
     em 相对于父元素/自身的font-size等比例
+
+
+- props  组件通信
+  - 传递状态
+  - 传递自定义函数
+  - 直接解构，如果参数不多
+    const {
+      title, //任务
+      onDelete, //添加
+      } = props 单独解构
+
+
+- 数据绑定
+  - 变量  修改值
+  - 数据状态
+    - Data binding **数据**绑定  jsx就是静态的
+      {} 数据绑定
+    - 数据与界面状态的统一
+      - 界面是由数据驱动的
+      - 维护数据与界面状态的一致性，
+    - 相应式的
+
+  
+
+- vue 和 react 区别
+  - vue 好入门，api 好用
+  - react 倾向于原生js 入门难
+    hooks? 好用的函数，一般以use开头
+
+- <input v-model=“text”/>
+  <input value ={text} coChange={()=>setText(text)};/>
+  react 坚持单向绑定
