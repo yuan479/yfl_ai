@@ -1,0 +1,35 @@
+<script>
+    function debounce(fn, delay) { //函数的返回值也是一个函数，高级函数
+        // var that = this // window
+        //console.log(that, "???????")
+        // let id = null
+        return function (args) {
+            // 定时器返回ID
+            //fn 自由变量 一等对象 给对象添加ID属性
+            /*  if (fn.id) {
+                 clearTimeout(fn.id)
+             } */
+            var that = this // window
+            console.log(that, "???????")
+            clearTimeout(fn.id)
+
+            fn.id = setTimeout(function () {
+                // this 丢失问题: 
+                fn.call(that, args)
+            }, delay)
+        }
+
+    }
+
+    let obj = {
+        count: 0,
+        inc: debounce(function (val) {
+            // fn 不是普通函数，fn执行时，还要用this
+            // console.log(this,"!!!!")
+            console.log(this.count, "!!!!")
+            console.log(this.count += val)
+            // this.count += val
+        }, 500)
+    }
+    obj.inc(2)
+</script>

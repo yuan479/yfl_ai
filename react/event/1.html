@@ -5,16 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS DOM2 事件机制</title>
 </head>
+
 <style>
+    body{
+    margin-left: 400px;
+    margin-top: 200px;
+}
     #parent{
-        width: 400px;
-        height: 400px;
-        background:linear-gradient(45deg,pink 30% , aqua 100%);
-    }
-    #child{
         width: 200px;
         height: 200px;
-        background:linear-gradient(45deg,red 30%, yellow 100%);
+        background-color: rgb(158, 158, 158);
+    }
+    #child{
+        width: 100px;
+        height: 100px;
+       background-color: rgb(0, 0, 0);
     }
 </style>
 <body>
@@ -33,12 +38,28 @@
            console.log(event.target)
             console.log('parent')
         },true) */
-        document.getElementById('parent').addEventListener('click',function(event){
-            console.log()
+      /*   document.getElementById('parent').addEventListener('click',function(event){
+            console.log("我是大盒子")
         },true)
            document.getElementById('child').addEventListener('click',function(event){
-            console.log()
-        },false)//改为true 就会打开冒泡
+            console.log("我是小盒子")
+        },true)//改为true 就会打开冒泡 */
+
+        document.getElementById('parent').addEventListener('click',function(event){
+            console.log("大盒子---向内")
+        },true)
+        
+document.getElementById('child').addEventListener('click',function(event){
+            console.log("小盒子---向内")
+        },true)
+        
+document.getElementById('child').addEventListener('click',function(event){
+            console.log("小盒子---向外")
+        },false)
+        
+document.getElementById('parent').addEventListener('click',function(event){
+            console.log("大盒子---向外")
+        },false)
     </script>
 </body>
 </html>
