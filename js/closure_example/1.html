@@ -7,10 +7,11 @@
     <title>闭包应用-防抖节流</title>
 </head>
 <style>
-    body{
+    body {
         margin-top: 50px;
     }
 </style>
+
 <body>
     <input type="text" id="inputA">
     <br>
@@ -31,9 +32,9 @@
             return function (args) {
                 // 定时器返回ID
                 //fn 自由变量 一等对象 给对象添加ID属性
-                /*  if (fn.id) {
-                     clearTimeout(fn.id)
-                 } */
+                if (fn.id) {
+                    clearTimeout(fn.id)
+                }
                 clearTimeout(fn.id)
 
                 fn.id = setTimeout(function () {
@@ -42,15 +43,15 @@
             }
 
         }
-        inputA.addEventListener('keyup', function (event) {
-            // 耗时性的操作
-            //google suggest 搜索建议
-            //图片懒加载 scroll + getBoundingClientRect() 触发频率太高，服务器容易宕机
-            // console.log(event.target.value)
-            //为什么要减少触发频率？ 
-            // 因为没有必要？ 用户意图是以单词为单位，而不是字母
-            ajax(event.target.value)
-        })
+        /*  inputA.addEventListener('keyup', function (event) {
+             // 耗时性的操作
+             //google suggest 搜索建议
+             //图片懒加载 scroll + getBoundingClientRect() 触发频率太高，服务器容易宕机
+             // console.log(event.target.value)
+             //为什么要减少触发频率？ 
+             // 因为没有必要？ 用户意图是以单词为单位，而不是字母
+             ajax(event.target.value)
+         }) */
 
         //利用高阶函数 耗时函数-> 变成闭包的自由变量 -> 返回一个新函数，频繁执行
         let dobounceAjax = debounce(ajax, 1000)
@@ -58,6 +59,29 @@
             dobounceAjax(event.target.value)
         }
         )
+       /*  window.addEventListener('resize', () => {
+            console.log("窗口你变了！");
+        }); */
+        function throttle(fn, delay) {
+    let last = 0;
+    return function (...args) {
+        const now = Date.now();
+        if (now - last >= delay) {
+            fn.apply(this, args);
+            last = now;
+        }
+    };
+}
+
+// 使用节流包装一个窗口大小监听函数
+const smartResize = throttle((width) => {
+    console.log("当前窗口宽度:", width);
+}, 1000);
+
+// 绑定 resize 事件
+window.addEventListener('resize', () => {
+    smartResize(window.innerWidth);
+});
     </script>
 </body>
 
