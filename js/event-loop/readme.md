@@ -13,3 +13,10 @@
 不能等它，而是先执行其他任务，等它执行完了，再回来执行
 - script 脚本是一个**宏任务** ：
 
+## 微任务
+    紧急的，优先的，同步任务执行完成后的一个补充
+  - promise.then
+  - MutationObserver
+    dom 改变在页面渲染前， 拿到DOM有啥改变？
+  - queueMicrotask
+  - process.nextTick()

@@ -6,8 +6,25 @@
     <title>微任务</title>
 </head>
 <body>
+    <div id="div"></div>
     <script>
-        
+        //event loop 是执行机制，也是代码执行的开始
+        //html 是第一个BFC 块级格式化上下文：里面的不受外界影响
+        const target = document.getElementById('div')
+        document.body.appendChild(target)
+        const observer = new MutationObserver(()=>{
+            console.log('执行微任务:MutationObserver')
+        })
+        //监听target 节点的变化
+        observer.observe(target,{
+            attributes:true,
+            chileList:true,
+
+        })
+
+        target.setAttribute('data-set','123')//添加属性
+        target.appendChild(document.createTextNode('123'))//添加文本节点
+        target.setAttribute('style','background-color:pink')//添加样式
     </script>
 </body>
 </html>
