@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //三种绑定上下文的方法，闭包的应用场景
+   /*  const person ={
+        name:"艾伦耶格尔",
+        sayHello:function(){
+            //this丢失
+            setTimeout(()=>{
+                console.log(`${this.name}:机油哒`)
+            },1000)
+        }
+    } */
+    
+   /*    const person ={
+        name:"艾伦耶格尔",
+        sayHello:function(){
+            //this丢失
+            let that =this
+            setTimeout(function(){
+                console.log(`${that.name} : 机油哒~`)
+            },1000)
+        }
+    }  */
+    
+    const person ={
+        name:"艾伦耶格尔",
+        sayHello:function(){
+            //this丢失
+
+            setTimeout(function(){
+                console.log(`${this.name} : 机油哒~`)
+            }.bind(this),1000)
+        }
+    } 
+    person.sayHello()
+</script>
+</body>
+</html>

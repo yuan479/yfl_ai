@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包中的监听事件</title>
+</head>
+<body>
+<button id="myButton">点我啊~ </button>
+<script>
+    const obj ={
+        message:"杂鱼~ ，杂鱼~",
+        init:function(){
+            const button = document.getElementById("myButton")
+            const that = this; //保存this的引用 事件处理中的闭包
+            button.addEventListener('click',function(){
+                console.log(that.message) //使用保存的this引用
+            })
+        }
+    }
+
+    obj.init()
+</script>
+</body>
+</html>

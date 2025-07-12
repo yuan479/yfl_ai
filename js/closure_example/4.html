@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="inputC" />
+
+    <script>
+        let inputC = document.getElementById("inputC")
+        const ajax = function (content) {
+            console.log(content)
+        }
+        function throttle(fn, delay) {
+            let last =0//上一次的执行时间
+            deferTimer  =null//timeout id 
+            // return function () {
+                return function (...args) {
+                //闭包的应用场景
+                let that = this //setTimeout 会产生this的丢失问题，所以需要保存this
+                let now = + new Date() //+号是为了转成数字类型
+               // let args = arguments //arguments是一个类数组对象，所以需要保存
+                if (last && now < last + delay) {
+                    clearTimeout(deferTimer) //如果在delay时间内再次触发，那么就清除上一次的定时器
+                    deferTimer = setTimeout(function () {
+                        last = now //更新上一次的执行时间 
+                    fn.call(that, args) //执行函数
+                    }, delay) //防抖
+                }else{
+                    last=now //更新上一次的执行时间
+                    fn.apply(that, args) //执行函数
+                }
+            }
+        }
+        let throttleAjax = throttle(ajax, 1000)
+        inputC.addEventListener('keyup', function (e) {
+            throttleAjax(e.target.value)
+        })
+    </script>
+</body>
+
+</html>
