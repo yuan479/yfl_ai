@@ -30,7 +30,7 @@ const headers = {
     //内容类型
     'Content-Type': 'application/json',
     //授权
-    'Authorization': 'Bearer sk-aa661822bf1b442ba5e9e2dd201da865'
+    'Authorization': 'Bearer sk-b0e36e857954443c8f9f7bd8376e678b'
 }
 //请求体
 

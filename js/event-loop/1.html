@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+    <script>
+        //一个宏任务的开始，一个script就是一个宏任务
+        //分为同步任务和异步任务
+        //同步任务：从上到下，同步任务执行完，询问调用栈
+        //js执行时，会调用栈，栈清空，则同步代码执行完
+        //因为js是单线程，所以会把耗时性的任务放到某个地方。
+        console.log('任务开头')
+        //任务队列
+        //异步任务
+        //宏任务：setTimeout，setInterval，setImmediate，I/O，UI rendering
+        setTimeout(()=>{
+            console.log('执行setTimeout')
+        },0)
+        //任务队列
+        //异步任务，微任务，新的event,处理异步变同步，控制执行流程
+        //promise有三个状态：pending，fulfilled，rejected
+        Promise.resolve().then(()=>{
+            console.log('执行Promise')
+        })
+        console.log('任务结尾')
+    </script>
+</body>
+</html>
