@@ -7,7 +7,7 @@ const Child =()=>{
     const theme = useContext(ThemeContext) // 从context中拿到value
     return(
        <div className={theme}>
-
+        Child {theme}
        </div>
     ) 
 }
