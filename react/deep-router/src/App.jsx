@@ -2,6 +2,8 @@ import { useState, lazy, Suspense, } from 'react'
 import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom'
 import './App.css'
 import Navigation from './components/Navigation'
+import ProtectRoute from './pages/ProtectRoute'
+import Pay from './pages/Pay'
 //不能下面这样引入，这样引入一定会执行
 // import Home from './pages/Home'
 // import About from './pages/About' 
@@ -10,6 +12,8 @@ import Navigation from './components/Navigation'
 const Home = lazy(() => import('./pages/Home'))  //函数 路由 ->Router 返回一个新的组件
 const About = lazy(() => import('./pages/About'))
 const NotFound = lazy(() => import('./pages/NotFound'))
+const Login = lazy(() => import('./pages/Login'))
+
 
 function App() {
 
@@ -25,7 +29,16 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            {/* 鉴权 */}
+            <Route path="/pay" element={
+              <ProtectRoute>
+                <Pay/>
+                <div>123</div>
+                <div>456</div>
+                </ProtectRoute>
+            } />
             <Route path="*" element={<NotFound />}></Route>
+            <Route path="login" element={<Login />}></Route>
           </Routes>
         </Suspense>
       </Router>
