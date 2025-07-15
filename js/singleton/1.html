@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设计模式--单例，工厂，代理模式</title>
+</head>
+
+<body>
+    <script>
+        // 函数 + prototype 实现单例模式 用来完成类的构建 因为js是原型式的
+        // js 的原型式的 它灵活、优雅，但是有一个缺点：无法实现私有属性和方法，
+        // 它是面向对象都不用学的简单语言
+        // Java ,C++ 不能理解
+        //es6为了兼容，走向企业级开发和拥抱更多开发者，es6推出了class 关键字
+        //let instance = null // 全局变量,会污染全局
+     /*    function Stroage() { // 构造函数
+            if (instance) { // 单例模式
+                return instance // 如果实例化过，则返回之前的
+            }
+            instance = this // 实例化的时候会调用这个构造函数  构造函数只会执行一次，
+        } */
+        class Stroage {
+            static instance
+            constructor() {
+                console.log(this, "桀桀桀") // 实例化的时候会调用这个构造函数  构造函数只会执行一次，
+            }
+            static getInstance(key) { // 方法
+                //返回一个实例
+                //如果实例化过，则返回之前的
+                // es6 的class 是一个语法糖，
+                // Stroage
+                if(!Stroage.instance){//类上的属性是静态属性
+                    Stroage.instance = new Stroage()
+                }
+                return Stroage.instance
+            }
+            getItem(key) { // 方法
+                return localStorage.getItem(key)
+            }
+            setItem(key, value) { // 方法
+                localStorage.setItem(key, value)
+            }
+        }
+        // 要实现单例，单例的优点：性能好
+        // 如何让class 只会实例化一次？--> 全局变量
+        // 我们要把new 干掉，又能拿到对象实例。
+        //  const stroage1 = new Stroage()  // 实例化的时候会调用这个构造函数  构造函数只会执行一次，
+        const stroage1 = Stroage.getInstance() 
+        const stroage2 = Stroage.getInstance() //静态方法 属于类的方法，不用实例化
+        //public private 属于实例的方法
+        //const stroage2 = new Stroage()
+        //对象引用
+        // 虽然现在的es6 class语法糖 能构建类，但是本质还是原型式的
+        // 目标：让它变成true
+        console.log(stroage1 === stroage2) // 两个对象要恒等，必须指向同一个地址，
+        stroage1.setItem('name', '张三') 
+        stroage2.setItem('name', '李四')
+        console.log(stroage1.getItem('name')) // 李四
+        console.log(stroage2.getItem('name')) // 李四
+    </script>
+</body>
+
+</html>
