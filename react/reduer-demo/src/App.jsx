@@ -69,9 +69,10 @@ const [state, dispatch]= useReducer(reducer, initialState) //适合大型项目
   return (
     <>
       <p>Count:{state.count}</p>
-      <button onClick={()=>dispatch({type:'increment'})}> + </button>
-      <button onClick={()=>dispatch({type:'decrement'})}> - </button>
       <input type="text" value={count} onChange={(e)=>setCount(e.target.value)}/>
+      <button onClick={()=>dispatch({type:'increment'})}> +1 </button>
+      <button onClick={()=>dispatch({type:'decrement'})}> -1</button>
+     
       <button onClick={()=>dispatch({type:'incrementByNum',payload:count})}> +??? </button>
     </>
   )
