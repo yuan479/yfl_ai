@@ -43,3 +43,30 @@
     #/  变成 #/about 
   - 触发一个事件
     hashChange 
+
+## 基于SPA 
+  - url可以改变，但是不会向后端发送请求，而是前端路由
+    - 如何路由改变，但不切换页面
+      - hash +hashChange 事件 +DOM
+      - history + pushState /popState 事件 + DOM
+  - 前端路由react-router-dom 配置，页面级别组件，进行热更新
+    - Outlet 占位
+  - 单页应用 只有一个页面，但是可以有多个url，url 成了一种路由状态
+    它有很多的路由状态，和多个页面级别组件
+    window.location  window.history
+    浏览历史通过栈生成，变成了一种路由状态
+
+## history
+   很早就有了，它可以使用history 在历史记录游走
+   - html5 赋予history 新的功能
+     - 因为hash + hashChange 有优点，但是缺点也很大
+       优点：兼容性好，什么浏览器都能用
+       缺点：http://127.0.0.1:63743/3.html#home
+       hash 不好理解
+       不能这样，要像传统后端路由一样
+       http://127.0.0.1:63743/首页
+       http://127.0.0.1:63743/about 关于
+      - 要怎么像后端路由一样，不刷新页面？
+        html5 升级了history api 来实现
+
+
