@@ -13,7 +13,7 @@ import './App.css'
 //     </>
 //   )
 // }
-
+/* 
 function Demo({items}) {
   return items.map(item => (
         <Fragment key={item.id}>
@@ -41,6 +41,15 @@ function App() {
       <Demo items={items}/>
     </>
   )
-}
+} */
+
+  function App(){
+    return(
+    <Fragment>
+      <h1>标题</h1>
+      <p>内容</p>
+    </Fragment>
+    )
+  }
 
 export default App
