@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //{} key:value 对象 ，O（1）时间复杂度，HashMap Map
+        //对象自变量作为第一种重要的数据结构，经常用数组来实现链表，队列。栈
+        // 长度的限定，类型的限定，
+        // js 里面可以限定长度，但是它不被约束，它会动态自动扩容
+        const arr = [1, 2, 3, 4, 5]
+        const arr2 = new Array(5).fill(undefined)
+        console.log(arr2) //[ undefined, undefined, undefined, undefined, undefined ]
+        arr2[8] = undefined
+        //为什么下标从0开始？ 方便计算偏移量
+        console.log(arr2)
+        for (let item of arr2) {
+            console.log(item) //
+        }
+        for (let key in arr2) {
+            console.log(key, arr2[key]) //
+        }
+
+    </script>
+</body>
+
+</html>

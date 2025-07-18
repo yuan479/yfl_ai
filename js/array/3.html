@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 用fill 填充都是一样的
+        // Array 静态方法
+       const arr1= Array.of(1,2,3) //满足不同值的初始化需求
+        console.log(arr1) //[ 1, 2, 3 ]
+
+        // 复杂的计算或转变
+        const arr2 = Array.from(new Array(5),
+        (val, index)=>String.fromCodePoint(65+index)
+        )
+        console.log(arr2) //[ 'A', 'B', 'C', 'D', 'E' ]
+    </script>
+</body>
+</html>

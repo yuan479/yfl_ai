@@ -36,3 +36,19 @@
     添加路由功能，SPA
     添加全局应用状态管理
     
+## RepoList  功能模块
+  - params 解析
+    - 使用useParams 动态参数对象
+    - 不要放到useEffect里面，一开始就要做
+    - 校验id
+      - 不要相信用户的任何提交
+    - navigate('/') 返回首页， 这个放在useEffect中
+ 
+## 组件的开发模式
+  - UI 组件 亮点（JSX）
+  - 自定义hooks useRepos 方便
+  - 状态管理 上升到应用级别，所以应该归context 管
+    - repos losding error =》context 的value
+    - useReducer 提供 reducer 函数，重新计算状态，响应式状态管理
+    
+  - 

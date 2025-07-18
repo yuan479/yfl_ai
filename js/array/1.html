@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初始化数组</title>
+</head>
+<body>
+    <script>
+        //指定了大小
+        //数组字面量
+        const arr = new Array(5)  //有点像c++ ,java
+        console.log(arr) //[empty × 5]
+        //为什么是enpty而不是其他的
+        //undefined 是一种数据类型，表示变量声明但未赋值
+        // 是一种数据类型，表示空值或不存在的对象
+        for(let key in arr){
+            // empty代表key不存在
+            console.log(key,arr[key]) //undefined
+        }
+    </script>
+</body>
+</html>
