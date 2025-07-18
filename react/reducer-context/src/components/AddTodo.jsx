@@ -19,8 +19,8 @@ const AddTodo =()=>{
     return(
         <>
         <form onSubmit={handleSubmit}>
-            <input type="text" value={text} onChange={e => setText(e.target.value)}/>
-            <button type="submit">Add </button>
+            <input type="text" value={text} onChange={e => setText(e.target.value)} style={{margin : '10px'}}/>
+            <button type="submit">添加 </button>
         </form>
         </>
     )
