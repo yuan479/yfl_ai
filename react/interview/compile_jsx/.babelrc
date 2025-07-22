@@ -3,3 +3,8 @@
         "@babel/preset-react"
     ]
 }
+/* {
+    "presets":[
+        "@babel/preset-env"
+    ]
+} */
