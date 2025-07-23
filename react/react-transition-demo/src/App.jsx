@@ -8,6 +8,7 @@ function App() {
   return (
     <>
      <Box></Box>
+     <MotionBox></MotionBox>
     </>
   )
 }
