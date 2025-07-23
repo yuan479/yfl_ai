@@ -1,7 +1,7 @@
 import styles from './another-button.module.css'
 const AnotherButton = () => {
     return (
-     <button className={styles.button}>AnotherButton</button>
+     <button className={styles.button}>B 组件</button>
     )
   }
   
