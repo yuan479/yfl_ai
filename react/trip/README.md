@@ -107,6 +107,24 @@ Readme.md 很重要 方便面试官了解
   - 项目初始化
 ## 功能模块
   - 配置路由及懒加载
+  - chatbot 模块
+    - llm 模块 chat 封装
+    - 迭代chat ，支持任意模型
+## 项目亮点和难点
+- 前端智能
+  - chat 函数
+  - 对各种模型比较感兴趣，升级为kimiChat,dobaoChat
+    可以随机切换大模型，通过参数抽象
+  - 原子css
+    - app.css 里面添加通用样式
+    - 各自模块里的module.css不影响其他
+    - lib-flexble 移动端适配
+    - postcss pxtorem 插件 快速还原设计稿
+    - 原子css, 一个元素按功能逻辑拆分成多个类，和原子一样
+      元素的样式就可以由这些原子类组合而成
+      样式复用更好，以后几乎可以不用写样式
+
+  
   - UI 组件库
     - react-vant 第三方组件库， 70%的组件已经有了，不用写
     - 选择一个适合业务的 UI组件库  或者公司内部的组件库
@@ -134,3 +152,10 @@ Readme.md 很重要 方便面试官了解
       - arr. findIndex
       -str.startsWith
       - promise
+
+  - 项目迭代
+    - 功能由浅入深
+    - chatbot deepseek 简单chat
+    - deepseek-r1 推理模型
+    - 流式输出
+    - coze 工作流接口调用

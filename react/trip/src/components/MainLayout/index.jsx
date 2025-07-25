@@ -1,6 +1,6 @@
-import { Outlet, useNavigate,useLocation } from "react-router-dom"
+import { Outlet, useNavigate, useLocation } from "react-router-dom"
 import { Tabbar, Search } from "react-vant"
-import { useState,useEffect } from "react"
+import { useState, useEffect } from "react"
 import { HomeO, CouponO, FriendsO, StarO, UserO } from "@react-vant/icons"
 
 const tabs = [
@@ -20,12 +20,16 @@ const MainLayout = () => {
       tab => location.pathname.startsWith(tab.path)
     )
     setActive(index)
-  },[])
+  }, [])
 
   return (
-    <>
-      <Search placeholder="请输入搜索内容" />
-      <Outlet />
+
+    <div className="flex flex-col h-screen"
+    style={{paddingBottom:'50px'}}>
+      <div className="flex-1">
+        <Outlet />
+      </div>
+
       <Tabbar value={active} onChange={
         (key) => {
           setActive(key)
@@ -35,7 +39,8 @@ const MainLayout = () => {
           <Tabbar.Item key={index} icon={tab.icon}>{tab.title}</Tabbar.Item>
         ))}
       </Tabbar>
-    </>
+    </div>
+
   )
 }
 export default MainLayout
