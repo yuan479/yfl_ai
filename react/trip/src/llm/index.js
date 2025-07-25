@@ -56,3 +56,9 @@ export const kimiChat = async (messages)=>{
     )
     return res
 }
+
+export const generateAvatar= async(text)=>{
+    const prompt=`你是一个头像生成助手，你要为用户设计一个头像，主打抽象风格。
+    用户的信息是${text},
+    要求抽象，有个性。`
+}
