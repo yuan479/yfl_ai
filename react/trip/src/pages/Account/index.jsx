@@ -1,5 +1,4 @@
 import useTitle from '@/hooks/useTitle'
-import { generateAvatar} from '@llm'
 import {
     useState
 } from 'react';
@@ -19,6 +18,9 @@ import {
     UserCircleO
 } from '@react-vant/icons'
 import styles from './account.module.css';
+import {
+    generateAvatar
+} from '@/llm';
 
 const Account = () => {
     const [userInfo, setUserInfo] = useState({
@@ -31,27 +33,28 @@ const Account = () => {
     const [showActionSheet, setShowActionSheet] = useState(false);
     const handleAction = async (e) => {
         console.log(e)
-        if(e.type===1){
-          //ai头像
-          const text=`昵称：${userInfo.nickname}
-          签名：${userInfo.slogan}`
-          const newAvatar = await genrateAvatar(text)
-        }
-        else if(e.type===2){
-          //tup
+        if (e.type === 1) {
+        // AI 生成头像
+            const text = `
+                昵称: ${userInfo.nickname}
+                slogan: ${userInfo.slogan}
+            `;
+            const newAvatar = await generateAvatar(text);
+        } else if (e.type === 2) {
+        // 图片上传
         }
     }
-    const actions =[
-      {
-        name:'AI生成头像',
-        color:'#000',
-        type:1
-      },
-      {
-        name:'上传头像',
-        color:'#f00',
-        type:2
-      }
+    const actions = [
+        {
+            name: 'AI生成头像',
+            color: '#123123',
+            type: 1
+        },
+        {
+            name: '上传头像',
+            color: '#ee0a24',
+            type: 2
+        }
 
     ]
     return (
@@ -63,7 +66,7 @@ const Account = () => {
                     height="64px"
                     src={userInfo.avatar}
                     style={{cursor: 'pointer'}}
-                    onClick={()=>setShowActionSheet(true)}
+                    onClick={() => setShowActionSheet(true)}
                 />
                 <div className="ml4">
                     <div className={styles.nickname}>昵称：{userInfo.nickname}</div>

@@ -1,15 +1,9 @@
 import './App.css'
-import {
-  Suspense,
-  lazy
-} from 'react';
-import {
-  Routes,
-  Route,
-  Navigate
-} from 'react-router-dom'
+import { Suspense, lazy } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom'
 import MainLayout from '@/components/MainLayout'
 import BlankLayout from '@/components/BlankLayout'
+import Loading from '@/components/Loading';
 
 const Home = lazy(() => import('@/pages/Home'));
 const Discount = lazy(() => import('@/pages/Discount'));
@@ -22,21 +16,23 @@ function App() {
 
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loading />}>
         {/* 带有tabbar的Layout */}
         <Routes >
+
           <Route element={<MainLayout />}>
-            <Route path="/" element={<Navigate to="/home" />}/>
-            <Route path="/home" element={<Home/>}/>
-            <Route path="/discount" element={<Discount/>}/>
-            <Route path="/collection" element={<Collection/>}/>
-            <Route path="/trip" element={<Trip/>}/>
-            <Route path="/account" element={<Account/>}/>
+            <Route path="/" element={<Navigate to="/home" />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/discount" element={<Discount />} />
+            <Route path="/collection" element={<Collection />} />
+            <Route path="/trip" element={<Trip />} />
+            <Route path="/account" element={<Account />} />
           </Route>
-          {/* 空的Layout */}
+          
           <Route element={<BlankLayout />}>
-            <Route path="/search" element={<Search />}/>
+            <Route path="/search" element={<Search />} />
           </Route>
+
         </Routes>
       </Suspense>
     </>

@@ -123,7 +123,18 @@ Readme.md 很重要 方便面试官了解
     - 原子css, 一个元素按功能逻辑拆分成多个类，和原子一样
       元素的样式就可以由这些原子类组合而成
       样式复用更好，以后几乎可以不用写样式
+  - search 
+    - 防抖
+    - api 接口
+      Google Suggest
+    - loavlStroage
 
+
+  - 文生图
+    优化prompt设计
+## 项目遇到什么问题  怎么解决
+- chat messages 遇到message 覆盖问题
+  这是一个闭包陷阱，一次事件里面，两次setMessages()
   
   - UI 组件库
     - react-vant 第三方组件库， 70%的组件已经有了，不用写
@@ -159,3 +170,10 @@ Readme.md 很重要 方便面试官了解
     - deepseek-r1 推理模型
     - 流式输出
     - coze 工作流接口调用
+
+## 通用组件开发
+- Loading
+  - 居中方案
+    position :fixed + tlrb 0 +margin auto
+  - React.memo
+  - anmimation

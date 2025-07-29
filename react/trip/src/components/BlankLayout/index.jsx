@@ -1,11 +1,12 @@
-import { Outlet } from "react-router-dom"
-
+import {
+  Outlet
+} from 'react-router-dom'
 const BlankLayout = () => {
   return (
-    <>
-      <Outlet />
-      <h1>我是BlankLayout页面</h1>
-    </>
+      <>
+          <Outlet />
+      </>
   )
 }
-export default BlankLayout
+
+export default BlankLayout;

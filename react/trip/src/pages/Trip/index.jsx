@@ -36,12 +36,12 @@ const Trip =  () => {
   const [messages,setMessages]=useState([
     {
       id:1,
-      content:"helllo~~",
+      content:"你好",
       role:'user'
     },
     {
       id:2,
-      content:"helllo ,I'm your father",
+      content:"你好，我是你的旅游咨询小助手",
       role:'assistant'
     }
   ])
@@ -75,7 +75,7 @@ const Trip =  () => {
 
   return (
     <div className='flex flex-col h-all'>
-       {isSending && (<div className="flexd-loading"><Loading style={{marginLeft:'49%'}} type="ball" /></div>)}
+       {isSending && (<div className="flexd-loading"><Loading style={{marginLeft:'49%',innerWidth:'100%'}} type="ball" /></div>)}
       <div className={`flex-1 ${styles.chatArea}`}>
       
       {
@@ -85,7 +85,7 @@ const Trip =  () => {
           className={msg.role==='user'?styles.messageRight:styles.messageLeft}
           >
             {
-              msg.role==='assitent'?<ChatO/>:<UserO/>
+              msg.role==='assitent'?<ChatO />:<UserO/>
             }
             {msg.content}
           </div>
