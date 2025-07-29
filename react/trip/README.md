@@ -115,20 +115,28 @@ Readme.md 很重要 方便面试官了解
   - chat 函数
   - 对各种模型比较感兴趣，升级为kimiChat,dobaoChat
     可以随机切换大模型，通过参数抽象
-  - 原子css
-    - app.css 里面添加通用样式
-    - 各自模块里的module.css不影响其他
-    - lib-flexble 移动端适配
-    - postcss pxtorem 插件 快速还原设计稿
-    - 原子css, 一个元素按功能逻辑拆分成多个类，和原子一样
-      元素的样式就可以由这些原子类组合而成
-      样式复用更好，以后几乎可以不用写样式
-  - search 
+- 原子css
+  - app.css 里面添加通用样式
+  - 各自模块里的module.css不影响其他
+  - lib-flexble 移动端适配
+  - postcss pxtorem 插件 快速还原设计稿
+  - 原子css, 一个元素按功能逻辑拆分成多个类，和原子一样
+    元素的样式就可以由这些原子类组合而成
+    样式复用更好，以后几乎可以不用写样式
+- search 
     - 防抖
     - api 接口
       Google Suggest
     - loavlStroage
 
+- 用户体验优化
+  - 搜索建议防抖 +useMemo 性能优化
+  - 组件粒度划分
+    React.memo + useCallback
+  - 懒加载
+  - 热门推荐 + 相关商品
+  - SPA
+  - 骨架屏 不用让用户等待
 
   - 文生图
     优化prompt设计
