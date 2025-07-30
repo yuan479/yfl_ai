@@ -137,6 +137,16 @@ Readme.md 很重要 方便面试官了解
   - 热门推荐 + 相关商品
   - SPA
   - 骨架屏 不用让用户等待
+ ### 瀑布流
+  - - 小红书等主流app的内容浏览用户体验产品
+  - 两列，图片高度不太一致，
+  - 滚动加载更多 图片懒加载
+  - 接口
+    - /api/images?page=${n} 支持翻页
+    - 唯一id用page+index完成
+    - 随机图片，高度随机
+  - images 怎么放到两列中？ MvvM
+    数据驱动界面 两列？  用奇数偶数
 
   - 文生图
     优化prompt设计
@@ -171,6 +181,11 @@ Readme.md 很重要 方便面试官了解
       - arr. findIndex
       -str.startsWith
       - promise
+      - 瀑布流随机数据生成
+      - Array.from({length:pageState},(_,1)=>({
+      }))
+    - 加载更多，位于盒子底部的元素，通过使用IntersectionObserver 观察它是否出现在视窗，性能更好，使用了观察者模式
+    - key id 下拉刷新
 
   - 项目迭代
     - 功能由浅入深

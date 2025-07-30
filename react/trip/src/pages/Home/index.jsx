@@ -9,7 +9,7 @@ const Home =()=>{
     return(
       <>
       <Search onClickInput={()=>navigate('/search')}></Search>
-        <h1>我是奶龙首页</h1> 
+        <h1 onClick={()=>navigate('/detail/1')}>我是奶龙首页</h1> 
       </>
     )
   }

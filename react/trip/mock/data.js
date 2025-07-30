@@ -1,10 +1,19 @@
 import Mock from 'mockjs';
 
+//每页放10个图片
+const getImages=(page,pageSize=10)=>{
+    return Array.from({length:pageSize},(_,i)=>({
+        id:`${page}-${i}`,//索引唯一
+        height:Mock.Random.integer(300,600),
+        url:Mock.Random.image('300x400',Mock.Random.color(),'#fff','img')
+    }))
+}
+
 export default [{
     url: '/api/search',
     method: 'get',
     timeout: 1000,
-    response:(req, res) => {
+    response: (req, res) => {
         // ?keyword=释小龙
         const keyword = req.query.keyword;
         let num = Math.floor(Math.random() * 10);
@@ -31,10 +40,10 @@ export default [{
     response: (req, res) => {
         return {
             code: 0,
-            data:[{
+            data: [{
                 id: '101',
                 city: "北京"
-            },{
+            }, {
                 id: '102',
                 city: "上海"
             }, {
@@ -73,6 +82,18 @@ export default [{
             code: 0,
             data: randomData
         }
+    }
+},
+{
+    // ?page=1 queryString
+    url: '/api/images',
+    method: 'get',
+    response: ({ query }) => {
+        const page = Number(query.page) || 1;
+        return {
+            code: 0,
+            data: getImages(page)
+        };
     }
 }
 ]
