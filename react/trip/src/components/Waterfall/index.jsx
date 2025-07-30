@@ -17,8 +17,10 @@ const Waterfall = (props) => {
             if(entry.isIntersecting){
                 fetchMore()
             }
+           // observer.unobserve(entry.target)
         })
        if(loader.current) observer.observe(loader.current)
+        return ()=>observer.disconnect()
     },[])
     return (
         <>
@@ -26,15 +28,15 @@ const Waterfall = (props) => {
             <div className={styles.wrapper}>
                 <div className={styles.column}>
                     {
-                        images.filter((_, i) => i % 2 === 0).map(img => (
-                          <ImageCard key={img.id} {...img}/>
+                        images.filter((_, i) => i % 2 === 0).map((img, i) => (
+                          <ImageCard key={`even-${i}`} {...img}/>
                         ))
                     }
-                </div>
+                </div>S
                 <div className={styles.column}>
                 {
-                        images.filter((_, i) => i % 2 !== 0).map(img => (
-                            <ImageCard key={img.id}{...img}/>
+                        images.filter((_, i) => i % 2 !== 0).map((img, i) => (
+                            <ImageCard key={`odd-${i}`} {...img}/>
                         ))
                     }
                 </div>

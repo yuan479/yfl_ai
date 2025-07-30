@@ -110,6 +110,8 @@ Readme.md 很重要 方便面试官了解
   - chatbot 模块
     - llm 模块 chat 封装
     - 迭代chat ，支持任意模型
+
+
 ## 项目亮点和难点
 - 前端智能
   - chat 函数
@@ -150,9 +152,26 @@ Readme.md 很重要 方便面试官了解
 
   - 文生图
     优化prompt设计
+  - toast 组件封装
+    - 需要自定义，UI组件库不满足需求
+    - UI props
+    - 可以使用js把它显示出来，实现跨层级通信
+      观察者
+      - mitt eventBus 事件总线
+        先实例化 mitt()
+        on (自定义事件的名字 ， callback)
+        emit (自定义事件的名字，参数)
+
 ## 项目遇到什么问题  怎么解决
 - chat messages 遇到message 覆盖问题
   这是一个闭包陷阱，一次事件里面，两次setMessages()
+  -闭包问题陷阱：
+    - 升级瀑布流
+      - 骨架屏
+      - 奇偶images两列分配可能有时候会像天蚕脚一样，不好看
+        用两个响应式数组，然后判断那一列数组最短，把新得到的img加入哪个数组
+      - intersectionObserver  用了两次，重复了，dry原则 封装？
+
   
   - UI 组件库
     - react-vant 第三方组件库， 70%的组件已经有了，不用写
@@ -185,7 +204,9 @@ Readme.md 很重要 方便面试官了解
       - Array.from({length:pageState},(_,1)=>({
       }))
     - 加载更多，位于盒子底部的元素，通过使用IntersectionObserver 观察它是否出现在视窗，性能更好，使用了观察者模式
+    - 组件卸载时，
     - key id 下拉刷新
+    - 使用IntersectionOnserver 再次图片懒加载 data-src
 
   - 项目迭代
     - 功能由浅入深

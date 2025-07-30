@@ -4,8 +4,8 @@ import Mock from 'mockjs';
 const getImages=(page,pageSize=10)=>{
     return Array.from({length:pageSize},(_,i)=>({
         id:`${page}-${i}`,//索引唯一
-        height:Mock.Random.integer(300,600),
-        url:Mock.Random.image('300x400',Mock.Random.color(),'#fff','img')
+        height:Mock.Random.integer(100,200),
+        url:Mock.Random.image('100x200',Mock.Random.color(),'#fff','img')
     }))
 }
 
