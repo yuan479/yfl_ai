@@ -10,9 +10,9 @@ const Home =()=>{
     return(
       <>
       <Search onClickInput={()=>navigate('/search')}></Search>
-        <h1 >我是奶龙首页
-          <Button type ="primary" onClick={()=>showToast(3,6,9)}></Button>
-          </h1> 
+        <h1 >我是奶龙首页</h1> 
+          <Button type ="primary" onClick={()=>showToast(3,6,9)}>这是一个按钮</Button>
+          
         
       </>
     )

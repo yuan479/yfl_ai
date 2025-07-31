@@ -7,7 +7,7 @@ export const useImageStore = create((set,get)=>({
     loading:false,
     fetchMore:async()=>{
         if(get().loading) return;//如果还在请求中，那么则不再请求
-        set({loaging:true})
+        set({loading:true})
         const res = await getImages(get().page)
         console.log(res)
        const newImages =res.data

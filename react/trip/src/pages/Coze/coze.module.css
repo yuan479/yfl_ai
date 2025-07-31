@@ -1,0 +1,125 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    height: 100vh;
+    font-size: 28px;
+}
+
+.previewContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.preview {
+    max-width: 400px;
+    border: 2px dashed #d9d9d9;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+}
+
+.preview:hover {
+    border-color: #1890ff;
+}
+
+.previewHint {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+}
+
+.settings {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    margin-top: 32px;
+}
+
+.selection {
+    width: 100%;
+    text-align: left;
+}
+
+.selection input {
+    width: 100px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    min-width: 660px;
+}
+
+.fileInput {
+    display: flex;
+    margin-bottom: 32px;
+}
+
+.uploadButton {
+    padding: 12px 24px;
+    background-color: #1890ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.uploadButton:hover {
+    background-color: #40a9ff;
+}
+
+.output {
+    margin-top: 20px;
+    min-height: 600px;
+    width: 100%;
+    text-align: left;
+}
+
+button {
+    padding: 20px;
+    min-width: 400px;
+    margin-left: 12px;
+    border: solid 1px black;
+}
+
+.generate {
+    width: 100%;
+    margin-top: 32px;
+}
+
+.generated {
+    width: 800px;
+    height: 800px;
+    border: solid 1px black;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中 */
+}
+
+.output img {
+    width: 100%;
+}
+
+.status {
+    color: #1890ff;
+    font-size: 16px;
+    text-align: center;
+    padding: 20px;
+}
+
+.placeholder {
+    color: #999;
+    font-size: 16px;
+    text-align: center;
+    padding: 20px;
+}

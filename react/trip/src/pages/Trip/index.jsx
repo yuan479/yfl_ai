@@ -53,24 +53,19 @@ const Trip =  () => {
       return  
     }
     setIsSending(true)
-    setMessages([
-      ...messages,
-      {
-        role:'user',
-        content:text
-      }
-    ]
-   
-  )
-  const newMessage = await chat([{
-    role:'user',
-    content:text
-  }])
-  setMessages([
-    ...messages,
-    newMessage.data
-  ])
-  setIsSending(false)
+    const userMessage = {
+      role:'user',
+      content:text
+    }
+    setMessages(prev => [...prev, userMessage])
+    
+    const newMessage = await chat([{
+      role:'user',
+      content:text
+    }])
+    setMessages(prev => [...prev, newMessage.data])
+    setIsSending(false)
+    setText('')
   }
 
   return (
@@ -85,7 +80,7 @@ const Trip =  () => {
           className={msg.role==='user'?styles.messageRight:styles.messageLeft}
           >
             {
-              msg.role==='assitent'?<ChatO />:<UserO/>
+              msg.role==='assistant'?<ChatO />:<UserO/>
             }
             {msg.content}
           </div>

@@ -32,7 +32,7 @@ const Waterfall = (props) => {
                           <ImageCard key={`even-${i}`} {...img}/>
                         ))
                     }
-                </div>S
+                </div>
                 <div className={styles.column}>
                 {
                         images.filter((_, i) => i % 2 !== 0).map((img, i) => (

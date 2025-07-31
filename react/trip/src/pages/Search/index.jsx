@@ -9,14 +9,14 @@ import {
 
 const HotListItems = memo((props) => {
     console.log('-------', props);
-    const {hotList} = props
+    const { hotList } = props
     return (
         <div className={styles.hot}>
             <h1>热门推荐</h1>
             {
                 hotList.map((item) => (
                     <div key={item.id} className={styles.item}>
-                    {item.city}
+                        {item.city}
                     </div>
                 ))
             }
@@ -46,12 +46,12 @@ const Search = () => {
         if (!query) {
             return;
         }
-        
+
         setSuggestList(query);
     }
 
     const suggestListStyle = {
-        display: query == ""? 'none': 'block'
+        display: query == "" ? 'none' : 'block'
     }
 
     return (
@@ -59,15 +59,15 @@ const Search = () => {
             <div className={styles.wrapper}>
                 <SearchBox handleQuery={handleQuery} />
                 {/* 维护性 */}
-                <HotListItems hotList={hotList}/> 
+                <HotListItems hotList={hotList} />
                 <div className={styles.list} style={suggestListStyle}>
-                {
-                   suggestList.map(item => (
-                        <div key={item} className={styles.item}>
-                        {item}
-                        </div>
-                   )) 
-                }
+                    {
+                        suggestList.map(item => (
+                            <div key={item} className={styles.item}>
+                                {item}
+                            </div>
+                        ))
+                    }
                 </div>
             </div>
         </div>

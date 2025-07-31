@@ -13,6 +13,7 @@ const tabs = [
 const MainLayout = () => {
   const [active, setActive] = useState(0)
   const navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
     console.log(location.pathname)
@@ -20,7 +21,7 @@ const MainLayout = () => {
       tab => location.pathname.startsWith(tab.path)
     )
     setActive(index)
-  }, [])
+  }, [location.pathname])
 
   return (
 

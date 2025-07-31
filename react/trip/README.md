@@ -139,6 +139,12 @@ Readme.md 很重要 方便面试官了解
   - 热门推荐 + 相关商品
   - SPA
   - 骨架屏 不用让用户等待
+  - 文件上传的preview 用的使html5的FileReader对象
+   - append(file)
+   - 拿到filr_id
+   - workflowUrl + workflow_id +token
+   - 工作流需要的参数
+
  ### 瀑布流
   - - 小红书等主流app的内容浏览用户体验产品
   - 两列，图片高度不太一致，
@@ -161,6 +167,33 @@ Readme.md 很重要 方便面试官了解
         先实例化 mitt()
         on (自定义事件的名字 ， callback)
         emit (自定义事件的名字，参数)
+      组件通过监听一个自定义事件，实现基于事件的组件通信
+  
+  - 智能生成图片
+    - 产品
+      - 例如：冰球社群的宠物运动员 智能出图
+      - 拥有社交属性
+      - 商业价值
+        技术服务
+        coze 工作流 智能编排ai 流程 编程的一种方式
+        - api调用
+
+  - 设计工作流
+    - 创建工作流 ani_pic
+      
+    - 代码节点
+      参数校验和逻辑功能，基于用户的参数返回运行的结果
+    - 图片生成流程
+      - 图片理解插件 计算机视觉
+      - 特征提取 结合了prompt
+      - work_flow?bot_id=7533134825490792489
+      - space_id=7449009468362637321&workflow_id=7533137385459056690
+      - token: pat_9zK5SZhW5jcDgOA8TAyl0PK2xc8rwyhmGDFSQ7LF4pIRDOJOvG0YPzXsDgY13uH9
+    - coze的图片要先上传到coze的云服务器中，
+     
+    
+
+
 
 ## 项目遇到什么问题  怎么解决
 - chat messages 遇到message 覆盖问题

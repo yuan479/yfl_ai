@@ -1,4 +1,4 @@
-import styles from 'toast.module.css'
+import styles from './toast.module.css'
 import {toastEvents} from './toastController'
 import { useState,useEffect } from 'react'
 
@@ -13,15 +13,17 @@ const Toast = () => {
     useEffect(()=>{
         const show =(info)=>{
             setData(info)
-            setIsVisiable(true)
+            setIsVisible(true)
+            setTimeout(()=>setIsVisible(false),3000)
         }
         // toastEvents 是mitt 的实例
         //自定义事件 show 是事件的名字
         // on 监听一个事件
         //订阅了一个show事件
         toastEvents.on('show',show)
+        return ()=>toastEvents.off('show',show)
     },[])
-    if(!visible) return rull
+    if(!visible) return null
     return (
         <div className={styles.toastWrapper}>
 
