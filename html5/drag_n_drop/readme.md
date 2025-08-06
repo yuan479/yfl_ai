@@ -15,3 +15,14 @@
     @media(条件 <600 ：移动端 ，<1024 Ipad PC , >1200lg 大尺寸 1600+)
 
   - 多设备适配 移动时代
+
+  - drag and drop
+    - 有些元素有默认的drag特性
+      比如图片就可以拖拽到别的tab显示
+    - dragStart preventDefault
+    - 给元素添加dragable = true  让元素能支持html5的拖拽功能
+    - 为了模拟现实中的用户体验，容器可以drop
+    - dragEnter 要preventDefault 一些样式反馈
+    - dragOver 要preventDefault
+    - drop 删除、拖拽上传
+    - dragLeave

@@ -25,12 +25,12 @@
         width: 150px;
         height: 150px;
         margin: 10px;
-        border: 3px dashed black;
+        border: 3px solid black;
         background-color: white;
     }
 
     .fill {
-        background-image: url('../68e30b6de7581825b74f49082419222c.jpg');
+        background-image: url('https://img1.baidu.com/it/u=3934253456,2142627551&fm=253&fmt=auto&app=138&f=PNG?w=500&h=500');
         width: 145px;
         height: 145px;
         cursor: pointer;
@@ -48,8 +48,12 @@
         }
     }
 
+    .hold {
+        border: 5px solid #ccc;
+    }
+
     .hovered {
-        background-color: #333;
+        background-color: #c9c9c9;
         border-color: white;
         border-style: dashed;
     }
@@ -58,7 +62,7 @@
 <body>
     <div class="empty">
         <!-- draggable 属性 表示元素可以被拖拽 -->
-        <div class="fill" draggable></div>
+        <div class="fill" draggable="true"></div>
     </div>
     <div class="empty"></div>
     <div class="empty"></div>
@@ -73,12 +77,40 @@
         fill.addEventListener('dragstart', dragStart);
         fill.addEventListener('dragend', dragEnd);
 
-            function dragStart(event) {
+        for (const empty of empties) {
+            empty.addEventListener('dragover', dragOver);
+            empty.addEventListener('dragenter', dragEnter);
+            empty.addEventListener('dragleave', dragLeave);
+            empty.addEventListener('drop', drop);
+        }
 
+        function dragStart(e) {
+            if (!e.target.classList.contains('fill')) {//不是奶龙
+                e.preventDefault();//阻止默认行为
+                return;
             }
-            function dragEnd(event) {
-
-            }
+            fill.classList.add('hold');
+            setTimeout(() => {
+                fill.className='invisible';
+            }, 0);
+        }
+        function dragEnd(e) {
+            fill.className='fill'
+        }
+        function dragOver(e) {
+            event.preventDefault();
+        }
+        function dragEnter(e) {
+            e.preventDefault();
+            this.classList.add('hovered');
+        }
+        function dragLeave(e) {
+            this.className = 'empty';
+        }
+        function drop(event) {
+            this.className = 'empty';
+            this.append(fill);
+        }
 
     </script>
 </body>
