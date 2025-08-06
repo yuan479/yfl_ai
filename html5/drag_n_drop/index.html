@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        background: linear-gradient(45deg, rgb(255, 198, 198), rgb(255, 255, 178));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+        margin: 0;
+    }
+
+    .empty {
+        width: 150px;
+        height: 150px;
+        margin: 10px;
+        border: 3px dashed black;
+        background-color: white;
+    }
+
+    .fill {
+        background-image: url('../68e30b6de7581825b74f49082419222c.jpg');
+        width: 145px;
+        height: 145px;
+        cursor: pointer;
+        background-size: cover;
+        background-position: center;
+    }
+
+    /* 自适应 */
+    /* 媒体选择  超大环绕屏 pc电脑 IPAD 手机 */
+    @media (max-width: 800px) {
+
+        /* 手机 */
+        body {
+            flex-direction: column;
+        }
+    }
+
+    .hovered {
+        background-color: #333;
+        border-color: white;
+        border-style: dashed;
+    }
+</style>
+
+<body>
+    <div class="empty">
+        <!-- draggable 属性 表示元素可以被拖拽 -->
+        <div class="fill" draggable></div>
+    </div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+
+    <script>
+        const fill = document.querySelector('.fill');
+        const empties = document.querySelectorAll('.empty');
+        const body = document.body;
+        // 事件委托机制
+        fill.addEventListener('dragstart', dragStart);
+        fill.addEventListener('dragend', dragEnd);
+
+            function dragStart(event) {
+
+            }
+            function dragEnd(event) {
+
+            }
+
+    </script>
+</body>
+
+</html>
