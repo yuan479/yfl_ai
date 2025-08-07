@@ -191,6 +191,12 @@ Readme.md 很重要 方便面试官了解
       - token: pat_9zK5SZhW5jcDgOA8TAyl0PK2xc8rwyhmGDFSQ7LF4pIRDOJOvG0YPzXsDgY13uH9
     - coze的图片要先上传到coze的云服务器中，
      
+- 语言输入发表文章功能
+  - 字节的tts
+  - onMouseDown
+  - BOM html5 
+    navigator.mediaDevices.getUserMedio  audio:true
+    用户隐私，要授权 getLocation
     
 
 
@@ -254,3 +260,6 @@ Readme.md 很重要 方便面试官了解
     position :fixed + tlrb 0 +margin auto
   - React.memo
   - anmimation
+
+## AI 功能
+  智能前端（http请求）+ 工作流+coze API + ai全新工作链路 + 自动化Agent
