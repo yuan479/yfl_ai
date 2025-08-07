@@ -55,4 +55,18 @@
     - 需要后端的配合，
   - 返回一个JSON
   - JSON:前端需要后端提供的JSON数据
-  - P ：padding
+  - P：padding
+
+*JSOPN 利用了script 可以跨域访问*
+  - 前端使用script src=跨域的资源请求地址
+  - 前后端配合，返回的json 外面包含着函数
+  - 页面上有个函数在等待执行
+  - 这个方法略显复杂，能否封装一下？
+
+*手写JSONP*
+  - 后端配合解析 script url get 请求中的callback 参数值
+    请求A 请求B...
+  - 为什么要JSONP请求，因为要获取动态数据
+    script标签原本是用来设计加载静态JS
+  - 前端封装
+    
