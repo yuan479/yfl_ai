@@ -14,4 +14,5 @@
     - webkit-line-clamp:2 不能独自生效
     - webkit 浏览器内核 Chrome + safari
     - mozilla 火狐浏览器内核代号
-    实验阶段的属性，新的，支持生效，
+    实验阶段的属性，新的，支持生效,否则也没事
+    
