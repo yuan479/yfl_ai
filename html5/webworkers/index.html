@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+<div id="box">
+
+</div>
+
+    <script>
+        //单线程
+        //html5启动一个新线程，同步执行，就像流水线
+        //复杂任务，用多线程
+        const worker = new Worker('./worker.js')//传入一个js文件
+        worker.postMessage('嗨~，想我了吗🎵')//通过消息机制，将任务派给worker线程
+        worker.addEventListener('message',e=>{
+            console.log(e.data)
+        })
+
+    </script>
+</body>
+
+</html>
