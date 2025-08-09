@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #demo{
+       /*  width: 800px;
+        height: 600px; */
+        border: 1px solid #ff9696;
+    }
+</style>
+<body>
+    <canvas id="demo"></canvas>
+    <script>
+
+    const canvas = document.getElementById('demo')
+    const context = canvas.getContext('2d')
+    context.fillStyle = 'orange'
+    context.fillRect(0,0,300,150)
+    context.clearRect(20,20,100,50)
+
+    let dis =0 
+    function animation(){
+        //请求运动的下一帧，浏览器的刷帧率频繁执行 60帧/秒
+        requestAnimationFrame(function(){
+            context.clearRect(0,0,300,150)
+            context.fillStyle = `rgba(${dis},0,0)`
+            context.font = '20px Arial'  // 字体设置要在绘制文字之前
+            context.fillText(dis,110,90)
+            dis++
+            animation()
+            if(dis>255){
+                dis = 0
+            }
+        })
+    }
+    
+    // 启动动画
+    animation()
+    </script>
+</body>
+</html>

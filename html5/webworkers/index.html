@@ -9,9 +9,9 @@
 
 <body>
 
-<div id="box">
+    <div id="box">
 
-</div>
+    </div>
 
     <script>
         //单线程
@@ -19,7 +19,7 @@
         //复杂任务，用多线程
         const worker = new Worker('./worker.js')//传入一个js文件
         worker.postMessage('嗨~，想我了吗🎵')//通过消息机制，将任务派给worker线程
-        worker.addEventListener('message',e=>{
+        worker.addEventListener('message', e => {
             console.log(e.data)
         })
 
