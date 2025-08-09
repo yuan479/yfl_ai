@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击订阅</button>
+    <button id="rmBtn">取消订阅</button>
+
+    <script>
+        const btn = document.getElementById('btn')
+        const rmBtn = document.getElementById('rmBtn')
+        rmBtn.addEventListener('click',function(){
+            btn.removeEventListener('click',callbackB)
+        })
+        const callbackA =function(){
+            alert('点击了1次')
+        }
+        const callbackB =function(){
+            alert('点击了2次')
+        }
+        //订阅发布者模式
+        btn.addEventListener('click',callbackA)
+        btn.addEventListener('click',callbackB)
+    </script>
+</body>
+</html>
