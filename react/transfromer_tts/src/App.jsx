@@ -19,39 +19,67 @@ function App() {
   //输出音频
   const [output, setOutput] = useState(null)
 
-
-
   const worker = useRef(null)
-
-  const handleGenerateSpeech=()=>{
-    setDisabled(true)
-    worker.current.postMessage({
-      text,
-      speak_id:selectedSpeaker
-    })
-  }
 
   useEffect(() => {
     //引入 transformer
     //http://localhost:5173//work.js
-    worker.current = new Worker(new URL('./work.js', import.meta.url), {
+    worker.current = new Worker(new URL('./worker.js', import.meta.url), {
       type: 'module'//支持es6模块化
     })
 
-    worker.current.postMessage({
-      text: 'hi~，想我了吗🎵',
-    })
+    /*   worker.current.postMessage({
+        text: 'hi~，想我了吗🎵',
+      }) */
 
     const onMessageReceived = (e) => {
-
+      console.log(e, '来自主线程')
+      switch (e.data.status) {
+        case 'initiate':
+          setReady(false)
+          setProgressItems(prev => [...prev, e.data])
+          break
+        case 'download':
+          break
+        case 'progress':
+          setProgressItems(
+            prev => prev.map(item => {
+              if (getTopItems.file === e.data.file) {
+                return {
+                  ...item,
+                  progress: e.data.progress
+                }
+              }
+              return item
+            })
+          )
+          break
+        case 'done':
+          setProgressItems(
+            prev => prev.filter(item => item.file !== e.data.file)
+          )
+          break
+        case 'ready':
+          setReady(true)
+          break
+      }
     }
-
     worker.current.onmessage = onMessageReceived;
 
     return () => {
       worker.current.removeEventListener('message', onMessageReceived)
     }
   }, [])
+
+  const handleGenerateSpeech = () => {
+    setDisabled(true)
+    worker.current.postMessage({
+      text,
+      speaker_id: selectedSpeaker
+    })
+  }
+
+  const isLoading = ready === false
 
   return (
     <>
@@ -65,12 +93,41 @@ function App() {
       <div className="flex"></div> */}
 
       <div className="min-h-screen flex justify-center items-center bg-gray-100">
+        {/* llm 初始化 */}
+        <div
+          className="absolute z-50 top-0 left-0 w-full h-full transition-all px-8 flex flex-col justify-center text-center"
+          style={{
+            opacity: isLoading ? 1 : 0,
+            pointerEvents: isLoading ? 'all' : 'none',
+            background: 'rgba(0,0,0,0.9)',
+            backdropFilter: 'blur(8px)'
+          }}
+        >
+          {
+            isLoading && (
+              <label className='text-white text-xl p-3'>
+                Loading MODEL...(only)
+              </label>
+            )
+          }
+          {
+            progressItems.map(data => (
+              <div key={`${data.name}/${data.file}`}>
+                <Progress
+                  text={`${data.name}/${data.file}`}
+                  percentage={data.progeess}
+                />
+              </div>
+            ))
+          }
+        </div>
+
         <div className="bg-white p-8 rounded-lg w-full max-w-xl m-2">
           <h1 className="text-3xl font-semibold to-gray-800 mb-1 text-center">
             端模型文本生成语言
           </h1>
           <h2 className="text-base font-medium text-gray-700 mb-2 text-center">
-            Made in <a href="">Transfromer.js</a>
+            Made with <a>Transfromer.js</a>
           </h2>
           <div className="mb-4">
             <label htmlFor="text" className="block text-sm font-medium text-gray-600">
@@ -84,7 +141,6 @@ function App() {
               value={text}
               onChange={(e) => setText(e.target.value)}
             >
-
             </textarea>
           </div>
           <div className="mb-4">
@@ -104,31 +160,27 @@ function App() {
                   </option>
                 ))
               }
-
             </select>
           </div>
           <div className="flex justify-center">
-          <button
-           className={`${disabled ? 
-            'bg-gray-400 cursor-not-allowed' :
-            'bg-blue-500 hover:bg-blue-600'
-          } text-white rounded-md py-2 px-4`}
-            onClick={handleGenerateSpeech}
-            disabled={disabled}
-          >
-            {disabled? 'Generating...': 'Generate'}
-          </button>
+            <button
+              className={`${disabled ?
+                'bg-gray-400 cursor-not-allowed' :
+                'bg-blue-500 hover-bg-blue-600'
+                } text-white rounded-md py-2 px-4`}
+              onClick={handleGenerateSpeech}
+              disabled={disabled}
+            >
+              {disabled ? 'Generating...' : 'Generate'}
+            </button>
+          </div>
+          {
+            output && <AudioPlayer
+              audioUrl={output}
+              mimeType={"audio/wav"}
+            />
+          }
         </div>
-        {
-          output && <AudioPlayer 
-            audioUrl={output}
-            mimeType={"audio/wav"}
-          />
-        }
-        </div>
-
-
-
       </div>
     </>
   )
