@@ -17,4 +17,6 @@
   - 封装组件
 
 *项目难点*
-  - 
+  - 单例模式封装 MyTextToSpeechPipeline
+  - getInstance 只实例化一次
+  - 懒执行：需要时才创建，或模块加载时直接创建
