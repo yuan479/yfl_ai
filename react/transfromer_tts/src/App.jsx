@@ -23,6 +23,14 @@ function App() {
 
   const worker = useRef(null)
 
+  const handleGenerateSpeech=()=>{
+    setDisabled(true)
+    worker.current.postMessage({
+      text,
+      speak_id:selectedSpeaker
+    })
+  }
+
   useEffect(() => {
     //引入 transformer
     //http://localhost:5173//work.js
@@ -47,14 +55,81 @@ function App() {
 
   return (
     <>
-      <Progress text="model" percentage={12} />
+      {/*  <Progress text="model" percentage={12} />
       <Progress text="model" percentage={50} />
       <Progress text="model" percentage={99.99} />
       <AudioPlayer
         audioUrl="https://cdn.freesound.org/previews/819/819183_12880153-lq.mp3"
         mimeType="audio/mpeg"
       />
-      <div className="flex"></div>
+      <div className="flex"></div> */}
+
+      <div className="min-h-screen flex justify-center items-center bg-gray-100">
+        <div className="bg-white p-8 rounded-lg w-full max-w-xl m-2">
+          <h1 className="text-3xl font-semibold to-gray-800 mb-1 text-center">
+            端模型文本生成语言
+          </h1>
+          <h2 className="text-base font-medium text-gray-700 mb-2 text-center">
+            Made in <a href="">Transfromer.js</a>
+          </h2>
+          <div className="mb-4">
+            <label htmlFor="text" className="block text-sm font-medium text-gray-600">
+              文本
+            </label>
+            <textarea
+              id="text"
+              className='border border-gray-300 rounded-md p-2 w-full'
+              rows="4"
+              placeholder='输入文本'
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+            >
+
+            </textarea>
+          </div>
+          <div className="mb-4">
+            <label htmlFor="speaker" className="block text-sm font-medium text-gray-600">
+              音色
+            </label>
+            <select
+              id="speaker"
+              className='border border-gray-300 rounded-md p-2 w-full'
+              value={selectedSpeaker}
+              onChange={(e) => setSelectedSpeaker(e.target.value)}
+            >
+              {//将可迭代对象快速转换为数组[[key:value],[key1:value1],[key2:value2],...]
+                Object.entries(SPEAKERS).map(([key, value]) => (
+                  <option key={key} value={value}>
+                    {key}
+                  </option>
+                ))
+              }
+
+            </select>
+          </div>
+          <div className="flex justify-center">
+          <button
+           className={`${disabled ? 
+            'bg-gray-400 cursor-not-allowed' :
+            'bg-blue-500 hover:bg-blue-600'
+          } text-white rounded-md py-2 px-4`}
+            onClick={handleGenerateSpeech}
+            disabled={disabled}
+          >
+            {disabled? 'Generating...': 'Generate'}
+          </button>
+        </div>
+        {
+          output && <AudioPlayer 
+            audioUrl={output}
+            mimeType={"audio/wav"}
+          />
+        }
+        </div>
+
+
+
+      </div>
     </>
   )
 }
