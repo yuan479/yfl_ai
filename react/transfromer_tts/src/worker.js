@@ -6,6 +6,7 @@ import {
     SpeechT5ForTextToSpeech,
     SpeechT5HifiGan
 } from '@xenova/transformers'
+import{encodeWAV} from './utils'
 /* env：负责配置ai模型运行环境对象 */
 /* Tensor：AI 模型处理数据的基本单位 */
 /* AutoTokenizer：AI自行分词器 */
@@ -74,14 +75,64 @@ class MyTextToSpeechPipeline {
             resolve(result)
         })
     }
+    static async getSpeakerEmbeddings(speaker_id) {
+        const speaker_embeddings_url = `${this.BASE_URL}${speaker_id}.bin`;
+        console.log(speaker_embeddings_url,'<--------speaker_embeddings_url')
+
+        //张量
+        //Tensor 是AI模型处理数据的基本单位
+        //数据的转换 将二进制数据转换为Float32Array 数组
+        //创建一个张量，构建1*512维度的特征向量
+        const speaker_embeddings= new Tensor(
+            'float32',
+            new Float32Array(await (await fetch(speaker_embeddings_url)).arrayBuffer()),
+            [1,512] //维度
+        )
+        return speaker_embeddings
+    }
 }
+//es6 新增的数据结构 HashMap 先简单想象成为JSON对象
+const speaker_embeddings_cache=new Map()
 
 //const []=await MyTextToSpeechPipeline.getInstance() //没做懒加载
 self.onmessage = async (e) => {
     // console.log(e)
     // ai pipeline 派发一个nlp任务   
     // 单例化做了一个懒加载 将初始化和加载放到第一次任务调试之时
-    const [] = await MyTextToSpeechPipeline.getInstance(x => {
+    const [tokenizer,model,vocoder] = await MyTextToSpeechPipeline.getInstance(x => {
         self.postMessage(x)
+    })
+
+    const {
+        input_ids
+    }=tokenizer(e.data.text)
+    //token 将是LLM的输入
+    // 将原始的输入，分词为一个个word（字），对应的数字编码
+    //向量的相似度，维度表示万事万物
+    //prompt -> token -> llm(函数，向量计算，百亿级别) ->outpus
+    
+    //console.log(e.data.text,input_ids,'~~~~~~~~~~~~~')
+    //基于model 生成的声音特征
+    let speaker_embeddings = speaker_embeddings_cache.get(e.data.speaker_id)
+    if(speaker_embeddings===undefined){
+        //下载某个音色的特征向量
+        speaker_embeddings=await MyTextToSpeechPipeline.getSpeakerEmbeddings(e.data.speaker_id)
+        //将下载的特征向量存入缓存
+        speaker_embeddings_cache.set(e.data.speaker_id,speaker_embeddings)
+    }
+    console.log(speaker_embeddings_cache,'<----------speaker_embeddings_cache')
+    const{waveform}=await model.generate_speech(
+        input_ids,//分词数组
+        speaker_embeddings,//512维的向量
+        {vocoder:vocoder}//合成器
+    )
+    console.log(waveform,'<----------waveform')
+    const wav = encodeWAV(waveform.data) //将音频数据编码为WAV格式
+    console.log(wav,'<----------wav')
+    self.postMessage({ //将音频数据发送给主线程，用于播放
+        status: 'done',
+       output:new Blob([wav], {
+         type: 'audio/wav' 
+        })
     })
 }
