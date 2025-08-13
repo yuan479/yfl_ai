@@ -32,6 +32,10 @@
       Object.assign()
       Array.prototype.concat()
       Array.prototype.slice()
-    - 否则用 Object.parse(Object.stringify())
+    - 否则用简单深拷贝 Object.parse(Object.stringify())
+        JSON。stringify() 序列化规则
+        undefined,function,symbol 是不合法的JSON值
     - 手写实现 高级深拷贝
+      - JSON.stringify() 没办法拷贝的
+      - 拷贝，
   
