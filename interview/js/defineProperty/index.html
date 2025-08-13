@@ -1,12 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div id="container">1</div>
-    <button id="button">点击 +1</button>
+    <button id="button" type="button">点击 +1</button>
+    <button id="loginBtn" type="button">登录</button>
+    <script>
+        /*     //js dom api
+            //不利于业务，DOM修改频繁，重绘重排多，性能不好
+            document.getElementById('button').addEventListener('click',function(){
+                var container = document.getElementById('container')
+                //显式类型转换
+                container.innerHTML = Number(container.innerHTML) + 1
+            })
+            //响应式开发 给一个数据状态，它发生改变，数据绑定的地方会自动更新 
+            //MVVM Model count View #container VM JSX
+     */
+        //1.状态
+        //定义对象来实现
+        var obj = {
+            // 要能监听对这个状态的修改
+            value: 1,//数据 怎么变成响应式状态？
+            isLogin: false,//数据状态
+        }
+        let value = 1
+        let isLogin = false
+        Object.defineProperty(obj, 'value', {
+            //定义obj 上的value属性，有些什么样的操作
+            get: function () {
+                console.log('读取了value属性')
+                return value
+            },
+            //对属性的拦截
+            set: function (newValue) {
+                value = newValue
+                document.getElementById('container').innerHTML = newValue
+            }
+        })
+       
+        //一次只能定义一个properity
+        Object.defineProperty(obj,'isLogin',{
+            get:function(){
+                console.log('正在读取isLogin属性')
+                return isLogin
+            },
+            set:function(newValue){
+                isLogin=newValue
+                document.getElementById('loginBtn').innerHTML=newValue
+            }
+
+        })
+      
+        document.getElementById('button').addEventListener('click', function () {
+            obj.value = obj.value + 1
+        })
+        document.getElementById('loginBtn').addEventListener('click', function () {
+            obj.isLogin = '登出'
+        })
+    </script>
 </body>
+
 </html>
