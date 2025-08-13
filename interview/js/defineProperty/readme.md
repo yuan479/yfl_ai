@@ -9,3 +9,8 @@
 - 拦截行为
 - 缺点：麻烦，每次只能定义一个属性 
 - obj.value
+- react,vue 现代前端MVVM 框架，早期用Objext.defineProperty实现响应式，现在使用Proxy
+- es6 Proxy 可以一次代理整个对象，代理行为更多
+
+- 属性描述符(property descriptor)
+  configuable 可配置 修改或删除
