@@ -34,7 +34,7 @@ const { title,
   clear,
   active,
   all,
-  allDome
+  allDone
 } = useTodos()
 </script>
 
@@ -49,14 +49,14 @@ const { title,
     <button v-if="active < all" @click="clear">清理</button>
     <ul v-if="todos.length">
       <li v-for="todo in todos">
-        <imput type="checkbox" v-model="todo.done"/>
+        <input type="checkbox" v-model="todo.done"/>
         <span>{{ todo.title }}</span>
       </li>
     </ul>
     <div v-else>暂无数据</div>
     <div>
       全选
-      <input type="checkbox" v-model="allDome" />
+      <input type="checkbox" v-model="allDone" />
       <span>{{ active }}/{{ all }}</span>
     </div>
   </div>

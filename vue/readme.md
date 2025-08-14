@@ -19,3 +19,20 @@
     - hooks 函数式编程思想
 
 - vue 和 react 相同点和区别
+
+- hooks 表达总线
+  - 什么是hooks？
+    能够在不编写类的情况下，使用React的状态和生命周期特性的函数。Hooks 提供了一种更直观、更灵活的方式来组织和复用组件中的逻辑和响应式业务。
+    react 内置的hooks useState, useEffect 副作用等，挺好用的。
+  - 内置的hook
+    useState，useEffect(副作用)，useMemo，useContext，useReducer，useCallback，
+    - useRef：用于创建一个可变的引用对象
+    - useLayoutEffect：在 DOM 更新后、浏览器绘制前同步执行，适合用于需要读取 DOM 布局并同步更新的场景，以避免视觉闪烁。
+    - useImperativeHandle：用于在函数组件中暴露自定义的 ref 值或方法。
+
+  - 自定义hooks
+    useTitle,useTodos,useRepos,useMouse
+    将响应式业务和响应式场景封装到hooks目录下，方便复用，UI组件干净
+
+  - ahooks 第三方 hooks/vueuse 库
+    useToggle、useRequest(所有的请求，data,loading,error) 我在业务中就经常用
