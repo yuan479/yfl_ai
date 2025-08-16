@@ -33,3 +33,6 @@
     git push origin xxx 推送代码
     git checkout xxx 切换分支
     git branch -d xxx 删除分支
+  - 场景
+    - 回退
+      git restore --staged xxx 取消暂存
