@@ -5,7 +5,8 @@
   - 三次握手/四次挥手
   - http/https
   - 浏览器缓存
-
+  - TCP 和 UDP 的区别
+ 
   - http 各个版本的特性
     - http 0.9 无状态
       最早的版本，只支持get请求，响应只有HTML文本，没有header，只能传输简单网页，不能传递图片、css、js
@@ -52,6 +53,11 @@
         - 图标字体库 iconfont
         - 开启压缩
         - 使用多个域名 一般在静态资源的CDN服务器上，
+          https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f69107522d864bb9b6d7eec9c58dc84f~tplv-k3u1fbpfcp-jj:207:138:0:0:q75.avis
+          将资源分布在不同的子域名下，Domain sharding 域名分片
+        - 浏览器缓存
+          - 强缓存：Expires/Cache-Control
+          - 协商缓存：Last-Modified/If-Modified-Since/Etag/If-None-Match
 
     - http 2.0 多路复用
       - 并发，多路复用
@@ -68,3 +74,30 @@
       - 基于UDP协议，UDP是无连接的，传输速度快，但是不可靠，TCP可靠
       - 多路复用，每个流都有自己的ID，不需要排队
       - 加密传输，TLS 1.3
+
+
+
+    - GET 和 POST 的区别
+        - 用途不同：
+            GET 用于获取资源，POST 用于提交数据
+            我在开发中会结合RestFul 协议标准开发（一切皆资源）
+            PATH/PUT 修改， DELETE 删除， GET 查询， POST 创建， OPTION 预检请求， HEAD 文件的信息
+        - 数据传输方式
+            GET url params 或 queryString 明文传输，不安全，长度有限制，
+            POST 请求体 相对安全 
+        - 安全性
+            GET 不安全 缓存
+            POST 相对安全，但还是要启用https 加密传输
+        - 数据长度限制
+            GET 受URL 长度限制，2048 个字节，不适合传输大量数据，
+            POST 没有长度限制，适合传输大量数据，比如大文件上传
+        - 幂等性
+            GET 幂等，多次请求相同的URL 不会改变服务器状态，
+            POST 非幂等，可能创建新资源或修改，
+        - 缓存与书签
+            GET 可以缓存，可以收藏为书签
+            POST 不可以缓存，不能收藏为书签
+        - 状态码
+            GET 200
+            POST 201
+      
