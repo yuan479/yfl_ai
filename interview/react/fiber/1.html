@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>requestAnimationFrame</title>
+</head>
+<style>
+    .progress-bar {
+        background: linear-gradient(270deg, rgb(255, 186, 199), rgb(224, 255, 255));
+        height: 10vh;
+        width: 0;
+        max-width: 100%;
+    }
+</style>
+
+<body>
+    <p>requestAnimationFrame 用于动画，不是一直执行的，1s执行60次，让用户交互成为更优先执行的操作</p>
+    <div id="bar" class="progress-bar"></div>
+    <button id="start">点我</button>
+    <script>
+        const btn = document.getElementById('start');
+        const bar = document.getElementById('bar');
+        let start = 0
+        let allInterval = [];
+        const progress = () => {
+            //触发回流，会重新计算元素的布局和样式，
+            bar.style.width = bar.offsetWidth + 1 + 'px';
+            // 这里的offsetWidth可以获取到当前元素的宽度，
+            requestAnimationFrame(progress);
+        }
+        btn.addEventListener('click', () => {
+            bar.style.width = '0';
+            let current = Date.now();
+            start = current;
+            requestAnimationFrame(progress);
+            console.log(allInterval)
+        })
+
+    </script>
+</body>
+
+</html>
