@@ -20,3 +20,12 @@
     - 数据安全可控
 
 - 安装mcp 客户端
+- 高德地图keyAPI
+
+## mcp的使用
+- server是基于mcp协议的服务器软件
+  定义tool
+- LLM
+- mcp client cline/sursor
+  配置mcp server
+- LLM->cline->server Transport 通信
