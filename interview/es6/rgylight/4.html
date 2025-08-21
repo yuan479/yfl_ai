@@ -1,55 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>红绿灯，停！</title>
+    <style>
+        /* 红绿灯容器样式 */
+        .traffic-light {
+            width: 100px;
+            height: 300px;
+            background-color: #333;
+            border-radius: 15px;
+            margin: 20px auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        /* 灯的基础样式 */
+        .light {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #555;
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+        }
+        /* 红灯样式 */
+        .red {
+            background-color: red;
+        }
+        /* 黄灯样式 */
+        .yellow {
+            background-color: yellow;
+        }
+        /* 绿灯样式 */
+        .green {
+            background-color: green;
+        }
+        /* 点亮状态 */
+        .active {
+            opacity: 1;
+            box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.7);
+        }
+        /* 按钮样式 */
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        /* 状态显示样式 */
+        #status {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px;
+        }
+    </style>
 </head>
 
 <body>
-    <button id="start">开始</button>
-    <button id="pause">暂停</button>
-    <div id="status"></div>
+    <div style="text-align: center;">
+        <button id="start">开始</button>
+        <button id="pause">暂停</button>
+        <div id="status"></div>
+    </div>
+    <!-- 红绿灯容器 -->
+    <div class="traffic-light">
+        <div id="redLight" class="light red"></div>
+        <div id="yellowLight" class="light yellow"></div>
+        <div id="greenLight" class="light green"></div>
+    </div>
     <script>
         const statusBox = document.getElementById('status');
+        const redLight = document.getElementById('redLight');
+        const yellowLight = document.getElementById('yellowLight');
+        const greenLight = document.getElementById('greenLight');
+
+        // 熄灭所有灯
+        function turnOffAllLights() {
+            redLight.classList.remove('active');
+            yellowLight.classList.remove('active');
+            greenLight.classList.remove('active');
+        }
+
+        // 点亮指定颜色的灯
+        function turnOnLight(color) {
+            turnOffAllLights();
+            if (color === '红') {
+                redLight.classList.add('active');
+            } else if (color === '黄') {
+                yellowLight.classList.add('active');
+            } else if (color === '绿') {
+                greenLight.classList.add('active');
+            }
+        }
+
         const sleep = (ms, singal) => new Promise((resolve, reject) => {
             const timer = setTimeout(resolve, ms);
             singal.addEventListener('abort', () => {
                 clearTimeout(timer);
                 reject(new DOMException('Aborted', 'AbortError'));
-            }, { once: true })//evenntmitter 订阅发布者模式 只执行一次
-        })
+            }, { once: true });
+        });
+
         const req = [
             { color: '红', time: 3000 },
             { color: '黄', time: 1000 },
             { color: '绿', time: 3000 }
-        ]
-        let controller = null
+        ];
+
+        let controller = null;
+
         async function trafficLight(singal) {
             while (!singal.aborted) {
                 for (const { color, time } of req) {
-                    if (singal.aborted) return
+                    if (singal.aborted) {
+                        turnOffAllLights();
+                        return;
+                    }
                     console.log(color);
                     statusBox.textContent = color;
+                    turnOnLight(color);
                     try {
-                        await sleep(time, singal)
-                    }
-                    catch (e) {
-                        if (e.name === 'AbortError') return
-                        throw e
+                        await sleep(time, singal);
+                    } catch (e) {
+                        if (e.name === 'AbortError') {
+                            turnOffAllLights();
+                            return;
+                        }
+                        throw e;
                     }
                 }
             }
         }
+
         document.getElementById('start').addEventListener('click', () => {
-            if (controller && controller.signal.aborted) return
-            controller = new AbortController()
-            trafficLight(controller.signal)
-        })
+            if (controller && !controller.signal.aborted) return;
+            controller = new AbortController();
+            trafficLight(controller.signal);
+        });
+
         document.getElementById('pause').addEventListener('click', () => {
-            if (controller) controller.abort()
-        })
+            if (controller) {
+                controller.abort();
+                turnOffAllLights();
+                statusBox.textContent = '已暂停';
+            }
+        });
     </script>
 </body>
 
