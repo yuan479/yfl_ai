@@ -33,3 +33,9 @@
 - 在 index.html 里面没有<script type="module" src="/src/main.jsx"></script>，怕浏览器不支持esm
 - webpack 整理关系，打包文件，慢
 - 适合大型项目，因为它有丰富的配置（牛逼的说明书）
+  - 配置entry 和output 这是核心
+  - plugins 
+      html-webpack-plugin 指定 html template 在哪
+  - devServer
+      http server 细节
+  web bundler （web打包器） 一切（静态资源）皆可打包
