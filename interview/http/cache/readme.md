@@ -26,22 +26,29 @@
     例如：访问https://www.baidu.com.index.js +请求头
     缓存文件 + 请求头 会放在一起，就像是这个文件的属性
 
-  - 强缓存
+  **强缓存**
+    Expires 过期时间，http 1.0的产物，通过获取过期时间减去系统时间得到时间戳，可能不准
+    cache-control，http 1.1，通过倒计时，
     响应头cache-control + 文件本地缓存，在过期时间范围内，不用请求，直接用本地缓存内容
-  Cookie
 
-  url 背后的 请求行、请求头、请求体
-  同一主机的不同端口，对应的是不同的程序或服务
-  DNS -> ip地址 80 -> http 443 https ，3306 mysql
-- 补全 url
-  例如输入：baidu.com 会自动补全
-  如果是：http://www.baidu.com 不安全
-  会 307跳转， Location:https://www.baidu.com/ 再请求一次
-  状态码：让浏览器知道接下来要干什么？
-   - 301：Moved Permanently      永久移动 ，只支持GET请求，不是GET改成GET
-   - 302：Found Moved Temporary  临时移动 ，只支持GET请求，不是GET改成GET
-   - 307：Temporary Redirect     临时重定向 ，各种方法，不会改
-   - 308：Permanent Redirect     永久重定向 ，各种方法，不会改
+  **协商缓存**
+    当强缓存过期，没有命中，这个资源在服务器端也不一定修改了，怎么交接一下
+
+    
+
+  **Cookie**
+    url 背后的 请求行、请求头、请求体
+    同一主机的不同端口，对应的是不同的程序或服务
+    DNS -> ip地址 80 -> http 443 https ，3306 mysql
+  - 补全 url
+    例如输入：baidu.com 会自动补全
+    如果是：http://www.baidu.com 不安全
+    会 307跳转， Location:https://www.baidu.com/ 再请求一次
+    状态码：让浏览器知道接下来要干什么？
+    - 301：Moved Permanently      永久移动 ，只支持GET请求，不是GET改成GET
+    - 302：Found Moved Temporary  临时移动 ，只支持GET请求，不是GET改成GET
+    - 307：Temporary Redirect     临时重定向 ，各种方法，不会改
+    - 308：Permanent Redirect     永久重定向 ，各种方法，不会改
 
 
     

@@ -17,7 +17,8 @@ http.createServer(function (request, response) {
 
         response.writeHead(200, {
             'Content-Type': 'text/javascript',
-            'Cache-Control':'max-age=20,public'
+            'Expires':new Date(Date.now()+7*24*60*60*1000).toISOString(),
+            //'Cache-Control': 'max-age=20,public'
         })
         const script = fs.readFileSync('./script.js', 'utf-8')
         response.end(script)
