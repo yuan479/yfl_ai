@@ -13,6 +13,7 @@
 
 *Demo 1：批量修改 DOM*
 **类名替代**
+原理：使用 className 是一次性切换一组样式规则，浏览器可以在下一次重绘前统一处理所有 CSS 规则
 ```js
 //错误的方法 ❌，这样会多次操作，可能触发多次重排重绘
 //虽然现代浏览器会自动批量更新，合并修改优化，但是可以避免
@@ -26,8 +27,8 @@ el.className='my-class'//用类名而不是一堆js代码
 ```
 
 **使用文档碎片**
+原理：所有在 fragment 内部的 DOM 操作，不会触发任何重排或重绘，因为浏览器不需要渲染它，最后一次性将 fragment 插入 DOM，只触发一次重排。
 ```js
-
 const fragment = document.creatmentDocumentFragment()
 for(let i=0;i<10;i++){
     const el = document.createElement('div')
@@ -83,5 +84,46 @@ el.style.transform='translateX(100px)'
       - 默认同步加载(阻塞式)
       - async //下载后立即执行，执行顺序不确定
       - defer  //等HTML执行完后执行，DOMContentLoaded之前执行
-      - module
+      - module //功能
+  - webp 格式的图片
+      图片的优化，画质不变，体积减小
+  - 图标字体库
+    减少http请求数
+
+
+
+*js执行优化*
+  - 防抖节流
+  - 文本workers 处理复杂计算
+  - requestAnimationFrame 优化动画
+  - requestIdCallback react fiber 机制
+      - schedule 机制
+
+
+*框架层优化*
+  - memo,useMemo,useCallback 避免不必要的渲染
+  - shadcn-ui 按需加载组件库
+  - 合理使用key 优化列表渲染
+
+
+*缓存策略*
+  - 强缓存和协商缓存
+    Expires(受限于客户端时间不准确) / Cache-Control 不发送请求
+    LastModified if-modified-since 时间戳 304
+    ETag if-none-match 
+  - localStroage / sessionStroage / cookie
+
+*网络优化*
+  - CDN加速，将静态内容放CDN上，做到分流，动静分离，CDN会自动缓存文件
+    多路复用，多域名服务器 img1.baidu.com img2.baidu.com
+  - Gzip 压缩
+  - HTTP/2 多路复用
+  - DNS 预解析
+
+
+*首屏优化*
+  - SSR 
+      组件渲染在服务器端就已经完成编译，执行，浏览器端直接显示就好
+  - 骨架屏
+  - http2.0 的server push 首屏数据推送
 
