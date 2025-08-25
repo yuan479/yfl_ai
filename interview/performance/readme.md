@@ -127,3 +127,25 @@ el.style.transform='translateX(100px)'
   - 骨架屏
   - http2.0 的server push 首屏数据推送
 
+*性能测试*
+  - chrome 的performance 面板
+      可以看到各项性能指标，针对性的优化，我们可以以此给出优化建议，
+      减少**首屏js/css体积(code spliting)**：一种将代码库拆分成更小、更易管理的块的技术，以便按需加载或并行加载，从而优化应用的加载性能和执行效率。
+  - 使用transform 代替位置调整，预加载相关资源
+  - 举例：
+    掘金 js = vue + vur-router + App.vue + Home.vue + Components
+    vue + vue-router 要单独拆分，为了更好的利用强缓存，它基本上不会变
+    App.vue + Home.vue + Components 业务代码经常改变，所以要单独切割文件
+    比如做了一次升级，如果不拆分，则更新维修时全部都要重新下载，花销大
+  
+  - lighthouse 
+    一个性能打分插件，在性能，无障碍，最佳实践，SEO，打分，并给出问题和优化建议，非常细致
+    - 图片大小优化：webp
+    - 字体库
+    - 渲染屏蔽请求
+
+*性能的关键指标*
+  - FCP First Constenful Paint
+      首内容绘制（First Contentful Paint, FCP）是衡量网页加载性能的指标，表示浏览器首次渲染出页面内容（如文本、图片等）的时间。
+  - LCP Largest Contentful Paint
+      最大内容绘制（Largest Contentful Paint, LCP）是衡量网页加载性能的关键指标，表示页面中最大可见内容元素（如图片、视频或文本块）完全渲染完成的时间。
