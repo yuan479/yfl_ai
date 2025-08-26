@@ -33,22 +33,22 @@
 
         //并行执行
         console.time('总耗时')
-        Promise.all([p1, p2, p3])
+       /*  Promise.all([p1, p2, p3])
             .then(res => {
                 console.log(res)
                 console.timeEnd('总耗时')
             }).catch(err => {
                 console.log(err)
                 console.timeEnd('总耗时')
-            })
+            }) */
 
-        /* Promise.all([p1, p2, p5])
+      Promise.all([p1, p2, p4])
             .then(res => {
                 console.log(res)
             }).catch(err => {
                 console.log(err)
             })
-
+  /* 
         Promise.all([p1, p4, p5])
             .then(res => {
                 console.log(res)
