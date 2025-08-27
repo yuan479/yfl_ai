@@ -1,7 +1,7 @@
 const people=[
-    { name: '爱丽丝', age: 20 ,role:'admin'},
-    { name: '莱茵', age: 30 ,role:'user'},
-    { name: '艾米莉', age: 25 ,role:'user'},
+    { name: '路明非', age: 19 ,level:'S'},
+    { name: '楚子航', age: 20 ,level:'A'},
+    { name: '凯撒', age: 21 ,level:'A'},
 ]
-const allAdults = people.every(person => person.age >= 18)
-const hasAdmin = people.some(person => person.role === 'admin')
+const allAdults = people.every(person => person.age >= 20)
+const isS = people.some(person => person.role === 'A')
