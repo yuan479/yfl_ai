@@ -7,3 +7,4 @@ interface Employee extends Person {
 }
 // 类型声明
 type PersonType = { name: string }
+type EmployeeType = PersonType & { job: string }
