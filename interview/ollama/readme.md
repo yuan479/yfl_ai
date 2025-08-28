@@ -8,4 +8,4 @@ deepseek-r1:1.5b
   1.5b：(1.5billion) 参数的尺寸
   Qwen 
 
-  在11434 端口提供api的调用
+  在11434 端口提供api的调用。
