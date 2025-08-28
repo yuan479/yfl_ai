@@ -1,0 +1,11 @@
+body{
+    height: 100vh;
+    background: linear-gradient(45deg, #ffdad1, #c8dbff);
+    font-family: '楷书', '楷体', 'STKaiti', serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0;
+    font-size: 3rem;
+}
