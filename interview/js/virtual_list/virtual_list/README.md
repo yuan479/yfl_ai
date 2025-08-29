@@ -1,8 +1,8 @@
-# React + Vite
+# 虚拟列表
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- 性能考题
+- 项目中的亮点
+    美团等软件的列表中，数据多，必须优化
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 手写题
+    
