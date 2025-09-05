@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from '@/lib/db'
 import bcrypt from 'bcryptjs'
+import {emailRegex,passwordRegex} from '@/lib/regexp'
 //result
 // . 什么都匹配 +一次或多次 @邮箱必备字符 \. 转义 一定要有. 
-const emailRegex = /.+@.+\..+/;//正则表达式
-const passwordRegex = /^(?!^\d+$)^[a-zA-Z0-9!@#$%^&*]{6,18}$/
+
 
 export async function POST(request: NextRequest) {
     try {
@@ -40,5 +40,7 @@ export async function POST(request: NextRequest) {
         })
     } catch (err) {
         return NextResponse.json({ error: '服务器错误' }, { status: 500 })
+    }finally{
+        await prisma.$disconnect()
     }
 }
