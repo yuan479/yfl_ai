@@ -1,2 +1,4 @@
 node_modules/ 
 .env.local
+interview/next/my-app/
+interview/next/my-todos/
