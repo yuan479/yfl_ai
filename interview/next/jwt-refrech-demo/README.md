@@ -117,4 +117,16 @@ Prisma Schema 是定义数据库模型、关系和数据类型的配置文件，
 
 *merge 合并流程*
 - fileHash 传入
-- 
+
+*虚拟列表*
+- 数据从而而来？
+    爬取一下
+    
+- 怎么渲染列表
+    - 时间分片
+        setTimeout + requestAnimationFrame + createDocumentFragment
+    - 虚拟列表
+        按需加载
+    - 分页加载
+        前端滚动到底部加载更多
+        后端分页
