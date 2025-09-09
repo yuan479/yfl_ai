@@ -52,4 +52,15 @@
  - 提交阶段：把改变应用到 DOM上
 
 *diff算法*
-- 同层级比较
+可以看：https://juejin.cn/post/7114177684434845727?searchId=202509091733289F750F07EE430DF1D6C0#heading-1
+- 同层级比较，否则时间复杂度会变成O (n^3)
+- 但是如果ABCDE -> EABCD 
+  dom开销比较大
+  diff 算法除了考虑本身的时间复杂度之外，还要考虑一个因素：dom操作的次数
+  移动操作比新增 + 删除操作要少，所以diff 算法会优先考虑移动操作。
+  insertBefore 
+**简单diff算法**
+ABCD -> DCAB
+多节点 diff 算法的目的是为了尽量复用节点，通过移动节点代替创建。
+ABEC ABC
+  你问newChildren
