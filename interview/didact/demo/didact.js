@@ -11,7 +11,6 @@ function createElement(type, props, ...children) {
                     ? child
                     //文本节点是叶子节点
                     : createTextElement(child)
-
             )
         }
     }
