@@ -35,3 +35,22 @@
   Puppeteer 是一个 Node.js 库，用于控制无头浏览器（如 Chrome），可自动化网页操作，如截图、爬取数据、测试交互等。
 - lucide-react  是一个轻量、开源的 React 图标库
 - react-markdown 是一个React组件，用于渲染Markdown 文本
+
+*Next.js*
+- Layout metadata
+  SEO
+- "use client"; 是 Next.js 中的指令，用于标记一个组件为客户端组件，使其可以使用 React 的交互功能（如 useState、useEffect）和客户端特有的逻辑。
+- 在 Tailwind CSS 中，[] 表示任意值（Arbitrary Value），允许你直接写入自定义的 CSS 值（如 80vh），会被转换为对应的内联样式，实现灵活布局。
+- @ai-sdk/react
+  hooks封装chatLLM的功能，方便流式输出
+
+*tailwindcss*
+- max-w-3xl 
+  响应式的技巧
+  48rem（适配）3xl = 768px ipad 竖着的尺寸
+  当它是移动设备(phone,pad)的时候，它是width = 100% =100vw
+  PC 端 ：768px + mx-auto
+  Mobile First 它移动设备优先t
+
+*typescript*
+- 组件props 类型定义
