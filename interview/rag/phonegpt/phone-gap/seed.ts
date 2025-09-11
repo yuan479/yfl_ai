@@ -3,10 +3,10 @@
 // langchain loader 是RAG的基础功能 txt ,pdf,excel...
 //加载网页内容
 import {createOpenAI} from '@ai-sdk/openai'
-import {PuppeteerWebBaseLoader} from '@langchain/community/document_loaders/web/puppeteer'
+//import {PuppeteerWebBaseLoader} from '@langchain/community/document_loaders/web/puppeteer'
 
-console.log('ahhhhh')
-const scrapePage = async (url: string): Promise<string> => {
+console.log('hi~ 想我了吗？')
+/* const scrapePage = async (url: string): Promise<string> => {
     const loader = new PuppeteerWebBaseLoader(url, {
       launchOptions: {
         headless: true,
@@ -32,4 +32,4 @@ loadData([
     // "https://en.wikipedia.org/wiki/IPhone_16_Pro",
     // "https://en.wikipedia.org/wiki/IPhone_15",
     // "https://en.wikipedia.org/wiki/IPhone_15_Pro",
-  ]);
+  ]); */
