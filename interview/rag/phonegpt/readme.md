@@ -65,7 +65,21 @@
 - lucide- react 图标库
 
 *后端亮点*
+- ai streamText 流式输出
 - result.toDataStreamResponse() 将 streamText 生成的流式结果转换为一个可被前端返回的 Response 对象，支持以数据流的形式传输ai输出，实现
+- 爬虫脚本
+  - seed 脚本任务
+    npm run seed 填充知识库
+  - seed.ts 用来编写这个脚本
+    但是ts文件不能直接运行
+    ts-node +typescript 可以直接运行
+    先解析成js，再运行
+- langchain Agent 开发框架
+  coze promptTemplate 记忆MessageMemory Community 
+
 
 *遇到的问题*
 - ai-sdk 检索的时候，llm 给了老版本的代码，调试出了问题，mcp解决问题
+- ts-node 编译时不支持esm
+  tsconfig.json ts 配置文件
+  支持ts-node commonjs

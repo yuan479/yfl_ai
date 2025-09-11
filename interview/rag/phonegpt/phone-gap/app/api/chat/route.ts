@@ -9,12 +9,10 @@ const openai = createOpenAI({
   baseURL: process.env.OPENAI_API_BASE_URL,
 });
 
-export async function POST(req: Request) {
-  const { messages } = await req.json();
-  
+export async function POST() {
   const result = await streamText({
     model: openai('gpt-3.5-turbo'),
-    messages,
+    prompt: '你好，请简单介绍一下你自己。',
   });
 
   return result.toDataStreamResponse();
