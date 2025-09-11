@@ -54,3 +54,18 @@
 
 *typescript*
 - 组件props 类型定义
+
+*前端部分亮点*
+- @ai-sdk/react 对chatBot 响应式业务的封装，一行代码完成流式输出useChat hook
+- react-markdown ai 响应 markdown 是主要格式
+  # - ![]() 解析
+- tialwindcss 适配
+- react 组件划分和 ts的类型约束
+- shadcn 组件库，按需加载，定制性强
+- lucide- react 图标库
+
+*后端亮点*
+- result.toDataStreamResponse() 将 streamText 生成的流式结果转换为一个可被前端返回的 Response 对象，支持以数据流的形式传输ai输出，实现
+
+*遇到的问题*
+- ai-sdk 检索的时候，llm 给了老版本的代码，调试出了问题，mcp解决问题

@@ -19,7 +19,7 @@ export default function ChatInput({
         <Input
         onChange={handleInputChange}
         value={input}
-        placeholder="Type your message..."
+        placeholder="Ask your message..."
         />
         <Button>
             <ArrowUp/>
