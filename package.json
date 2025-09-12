@@ -1,0 +1,12 @@
+{
+  "name": "learn_si",
+  "version": "1.0.0",
+  "description": "-不做传统程序员\r  -以智能生产力为核心(LLM 强大的，适合的，性价比高)\r   OpenAI\r   Claude sonnet(特别适合代码生成)\r   deepseek\r  -将AI 融入开发流程\r   -Prompt Engineering(**编程**)\r   -给一个身份，像人一样思考\r   -给一个具体的任务\r   -细化流程，清晰准确\r   -遵守什么，不要做什么\r ## AIGC 生成\r - chrome 插件开发(开发业务方向)\r  -比较简单\r  -比较多的外包和远程兼职\r  -传统做法\r   学，做demo,\r  -交给AI，改一下就好\r  -不太是编程知识 需要了解Prompt 概念\r  -自然语义编程\r  -随意地介入陌生领域 并几乎是高手",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

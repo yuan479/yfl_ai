@@ -1,0 +1,16 @@
+{
+  "name": "crawl",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "x-crawl 是一个灵活且功能强大的 Node.js 多功能爬虫库，支持页面、接口和文件的抓取，并集成了 AI 辅助功能以智能应对反爬机制和优化爬取策略。",
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "x-crawl": "^10.0.2"
+  }
+}

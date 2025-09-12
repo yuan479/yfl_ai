@@ -76,6 +76,15 @@
     先解析成js，再运行
 - langchain Agent 开发框架
   coze promptTemplate 记忆MessageMemory Community 
+- 正则html替换
+- vercel
+- ai-sdk
+- js的运动运行环境
+- v0 bolt
+    ai-sdk
+    网页(wikipidia) -> langchain/community +puppeteer(爬取)
+    -> langchain分块(chunks?)
+    -> supabase(查询)
 
 
 *遇到的问题*
@@ -83,3 +92,5 @@
 - ts-node 编译时不支持esm
   tsconfig.json ts 配置文件
   支持ts-node commonjs
+- rpc 调用
+  在supabase 数据库中调用函数
