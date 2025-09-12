@@ -61,12 +61,12 @@ const loadData = async (webpages: string[]) => {
     for(let chunk of chunks){
     const { embedding } = await embed({
       model: openai.embedding('text-embedding-3-small'),
-      value: chunks[0]
+      value: chunk
     })
     console.log(embedding, "??????????????")
     
     const { error } = await supabase.from('chunks').insert({
-      content: chunks[0],
+      content: chunk,
       vector: embedding,
       url: url
     })

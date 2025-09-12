@@ -12,23 +12,55 @@ const openai = createOpenAI({
 })
 
 async function generateEmbedding(text:string){
-return embed({
-  model:openai.embedding('text-embedding-3-small'),
-  value:text
-})
+  return await embed({
+    model:openai.embedding('text-embedding-3-small'),
+    value:text
+  })
 }
 
 async function fetchRelevantContext(embedding:number[]){
   const {
     data,
     error
-  }= await supabase.rpc("get_releveant_chunks",{
-    query_embedding:embedding,
-    match_threshold:0.5,
-    match_count:5
+  }= await supabase.rpc("get_relevant_chunks",{
+    query_vector:embedding,
+    match_threshold:0.7,
+    match_count:3
   })
   if(error){
     throw error
+  }
+  console.log(data,'妖魔鬼怪快离开~妖魔鬼怪快离开~')
+  return JSON.stringify(
+    data.map((item:any)=>`
+      Source: ${item.url},
+      Date Updated: ${item.date_updated},
+      Content:${item.content}
+      ========================
+      `)
+  )
+}
+const createPrompt =(context:string,userQuestion:string)=>{
+  return{
+    role:'system',
+    content:`
+     You are a helpful assistant that provides information about the latest smartphones. 
+      Use the following context to answer questions: 
+      ----------------
+      START CONTEXT
+      ${context}
+      END CONTEXT
+      ----------------
+      
+      Return the answer in markdown format including relevant links and the date when the information was last updated.
+      Where the above context does not provide enough information relating to the question provide an answer based on your own knowledge but caveat it so the user
+      knows that it may not be up to date.
+      If the user asks a question that is not related to a smartphone, politely inform them that you can only answer questions about smartphones.
+      
+      ----------------
+      QUESTION: ${userQuestion}
+      ----------------
+    `
   }
 }
 
@@ -41,7 +73,15 @@ export async function POST(req:Request){
     //console.log(embedding)
     //相似度计算
     const context = await fetchRelevantContext(embedding)
+    const prompt = createPrompt(context,latestMessage)
+    console.log(prompt,'prompt')
+    const result = streamText({
+      model:openai('gpt-4o-mini'),
+      messages:[prompt,...messages]
+    })
+    return result.toDataStreamResponse()
   }catch(err){
-
+    console.error('API错误:', err)
+    throw err
   }
 }

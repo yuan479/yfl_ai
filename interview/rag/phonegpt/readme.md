@@ -85,6 +85,14 @@
     网页(wikipidia) -> langchain/community +puppeteer(爬取)
     -> langchain分块(chunks?)
     -> supabase(查询)
+- prompt
+  - 准确
+  - 复用
+  - 格式
+    - 身份、任务、分区(context 和 question)
+  - 返回格式
+  - 约束，不回答手机之外的内容
+  - 接受一个参数，函数返回，我们的应用
 
 
 *遇到的问题*
@@ -94,3 +102,22 @@
   支持ts-node commonjs
 - rpc 调用
   在supabase 数据库中调用函数
+```sql
+    create or replace function get_relevant_chunks(
+      -- 一个长度为1536 的向量
+      query_vector vector(1536),
+      -- 只找相似度超过这个值的结果
+      match_threshold float
+      -- 最多返回多少条结果
+      match_count int
+    )
+      returns table(
+
+      )
+```
+- 向量的相似度计算
+  - mysql 不支持，postgresql 支持
+    <=> 距离计算符
+  - 数据库支持函数
+    传参，指定返回的内容
+    构建 sql 
