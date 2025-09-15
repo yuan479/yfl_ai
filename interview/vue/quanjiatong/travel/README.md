@@ -15,6 +15,11 @@ MVVM响应式       ref                         reactive useState
 - 计算属性
 - 响应式
 
+*Store 状态管理*
+- Pinia
+- 第一个参数，状态管路的名称
+- 第二个数组，
+
 *typescript*
 - vur-router 里的 RouterRecordRaw 帮助我们确保配置选项正确
   - 路由至少要有path 和component
@@ -27,3 +32,5 @@ MVVM响应式       ref                         reactive useState
     @vant/suto-import-resolver
 
 *区别*
+- react 单向绑定 绑定值 +事件
+- vue 双向 v-model 指令
