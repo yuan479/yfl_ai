@@ -14,3 +14,15 @@
 *aisuda*
 Aisuda（爱速搭）是阿里巴巴推出的一款低代码应用搭建平台，旨在通过可视化拖拽等方式，让开发者和业务人员能快速、高效地构建企业级应用。
 https://aisuda.github.io/amis-editor-demo/#/hello-world
+
+*核心*
+- 业务或产品需要实现
+- 快一点，容易一点，成本低一点的开发
+- 低代码编辑器
+  - 物料区域（type, props的组件），可拖拽的
+  - 组合显示区域（可以被drop）网页，agent,工作流（n8n，dify）
+  - 属性修改区域
+
+*我们要开发或维护低代码平台*
+- ReactFlow 
+
