@@ -43,3 +43,8 @@ allonment split pane 布局，用tailwindcss 写样式，zustand
 - 物料区
 - 编辑区
 - 设置区
+
+*遇到的问题*
+**1. useDrop 的时候会插入多次**
+**2.useDrop 多次重复，违法了dry原则**
+

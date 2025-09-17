@@ -8,7 +8,7 @@ export function Material() {
         return Object.values(componentConfig)
     },[componentConfig])
     return (
-        <div className="h-full bg-white p-4">
+        <div className="h-full bg-white p-4" >
             <div className="mb-4">
                 <h2 className="text-sm font-medium text-gray-700 mb-2">组件库</h2>
                 <div className="text-xs text-gray-500">拖拽组件到画布区域</div>

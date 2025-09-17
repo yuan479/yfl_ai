@@ -26,7 +26,7 @@ export const useComponentsStore = create<State & Actions>(
             components: [
                 {
                     id: 0,
-                    name: '???',
+                    name: 'Page',
                     props: {},
                     children: [],
                 }

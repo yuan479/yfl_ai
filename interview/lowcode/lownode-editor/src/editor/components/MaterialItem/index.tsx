@@ -8,7 +8,7 @@ export interface MaterialItemProps {
 export function MaterialItem(props: MaterialItemProps) {
     const { name } = props
     const [_, drag] = useDrag({
-        type: 'name',
+            type: name, // 使用组件名称作为拖拽类型
         //数据项
         item: {
            type: name,
