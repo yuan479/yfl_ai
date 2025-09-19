@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <script>
+        // 扁平化列表，没有层级关系
+        const flatList = [
+            { id: 1, parentId: null, name: '省' },
+            { id: 2, parentId: 1, name: '市' },
+            { id: 3, parentId: 1, name: '县' },
+            { id: 4, parentId: 3, name: '镇' },
+            { id: 5, parentId: 4, name: '村' },
+        ]
+
+        //组织成树状结构
+        //借助一个hashMap 查找 ，判断parentId 挂载到哪个节点下面
+        function listToTree(list, rootId = null) {
+            const tree = []
+            const map = new Map() //hashmap 查找
+            list.forEach(item => {
+                map.set(item.id, {
+                    ...item,
+                    children: []
+                })
+            })
+            list.forEach(item => {
+                const node = map.get(item.id)
+                if (item.parentId === rootId) {
+                    tree.push(node)
+                } else {
+                    const parentNode = map.get(item.parentId)
+                    if (parentNode) {
+                        parentNode.children.push(node)
+                    }
+                }
+            })
+            console.log(map)
+            return tree
+        }
+
+        listToTree(flatList)
+        
+    </script>
+</body>
+
+</html>
