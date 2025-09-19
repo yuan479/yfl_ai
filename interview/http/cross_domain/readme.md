@@ -70,3 +70,7 @@
     script标签原本是用来设计加载静态JS
   - 前端封装
     
+*WebSocket 全双工通信协议*
+- 在web 浏览器端的双工通信协议
+  WebSocket 是html5 对象，在web 端实现即时通信
+- 在服务器
